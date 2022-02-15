@@ -1,0 +1,79 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage{mathptmx}
+
+\usepackage{graphicx}
+\usepackage[outdir=./figs/]{epstopdf}
+\graphicspath{ {./figs/} }
+
+
+%%%%% definición de colores para el tema
+\usetheme{Madrid}
+\useoutertheme{infolines} % Alternatively: miniframes, infolines, split
+\useinnertheme{circles}
+
+\definecolor{nordwhite}{rgb}{0.9255, 0.9373, 0.9569}
+\definecolor{nordgrey}{rgb}{0.298, 0.3373, 0.4157}
+\definecolor{nordblue}{rgb}{0.3686, 0.5059, 0.6745} % nord blue (primary)
+\definecolor{nordlblue}{rgb}{0.5059, 0.6314, 0.7569}
+\definecolor{nordllblue}{rgb}{0.5333, 0.752, 0.8157} % nord lblue (secondary)
+\definecolor{nordlllblue}{rgb}{0.5608, 0.7373, 0.7333}
+
+\setbeamercolor{background canvas}{bg=nordwhite}
+\setbeamercolor{normal text}{fg=nordgrey}
+
+\setbeamercolor{palette primary}{bg=nordblue,fg=nordwhite}
+\setbeamercolor{palette secondary}{bg=nordlblue,fg=nordwhite}
+\setbeamercolor{palette tertiary}{bg=nordllblue,fg=nordwhite}
+\setbeamercolor{palette quaternary}{bg=nordlllblue,fg=nordwhite}
+
+\setbeamercolor{structure}{fg=nordblue} % itemize, enumerate, etc
+\setbeamercolor{section in toc}{fg=nordblue} % TOC sections
+
+% Override palette coloring with secondary
+\setbeamercolor{subsection in head/foot}{bg=nordlblue,fg=nordwhite}
+
+
+%%%%% caratula
+\title[Potencial de ML]{Potenciales interatómicos de Machine Learning}
+\subtitle{Seminario de doctorado}
+\author[Francisco FERNANDEZ]{Francisco FERNANDEZ}
+\logo{
+    \includegraphics[width=1.3cm,keepaspectratio]{logo_famaf.png}
+}
+\institute[FaMAF (UNC)]{Facultad de Matemática, Astronomía, Física y Computación 
+(Universidad Nacional de Córdoba) \\ \scalebox{1.5}{\insertlogo}}
+\date[\today]{\today}
+
+% tabla de contenidos
+\AtBeginSection[]
+{
+	\begin{frame}
+		\frametitle{Índice}
+		\tableofcontents[currentsection]
+	\end{frame}
+}
+
+\begin{document}
+
+    \frame{\titlepage}
+	
+	\begin{frame}
+        \frametitle{Índice}
+		\tableofcontents
+	\end{frame}
+
+    \section{Primera sección}
+	
+	\begin{frame}
+        \frametitle{Primera sección: lista}
+		Here is some rambling text
+		\begin{enumerate}
+			\item List item 1
+			\item List item 2
+		\end{enumerate}
+	\end{frame}
+
+\end{document}
