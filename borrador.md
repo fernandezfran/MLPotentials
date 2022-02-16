@@ -12,6 +12,8 @@ calculos de la estructura electrónica.
 **Mueller2020**: (Actualización a Behler2016). Acelerar simulaciones en la escala 
 atómica perdiendo poco en precisión.
 
+**Hong2019**:
+
 ## Introducción
 
 **Behler2016**:
@@ -38,6 +40,26 @@ y=PES, f=potencial interatómico. Tres pasos:
     más cerca,
     - invariancia frente a simetrías,
     - varía suavemente.
+
+**Hong2019**:
++ ML (inductivo) vs programación tradicional (deductivo).
++ Cambios en las definiciones de AI, ML y DL (fig 1).
++ Sistemas atómicos.
++ Sección 2:
+    - Categorización de ML.
+    - Instancia de entrenamiento, hipótesis, hiperparametros, función costo, 
+    feauture y target (característica y objetivo?).
+    - Aprendizaje automático y Redes neuronals supervisado:
+        * pares de ejemplos input-output, 
+        * ejemplos de algoritmos,
+        * DNN definición (fig 2 para explicar y dar el ejemplo de potenciales).
+    - No supervisado:
+        * clustering y visualización,
+    - ML flujo de trabajo en ciencias de los materiales:
+        * Obtener datos de entrenamiento (DFT),
+        * flujo de trabajo automatizado: script de pre y post procesamiento de 
+        los datos de, por ej, QE y LAMMPS,
+        * error cuadrático medio. 
 
 ## Descriptores
 
@@ -91,6 +113,11 @@ si se usan datos de LJ, recuperar LJ). Una gran ventaja es la simplicidad de los
 modelos. Hay poca investigación en esta área, sólo se probó en Cu y no se sabe
 si funcionará para dos o más elementos a la vez.
 
+**Hong2019**:
++ _Algoritmos genéticos_: para encontrar parametros óptimos a potenciales 
+conocidos (fig 3 también podría explicar _Symbolic regression_, son parecidos,
+aunque acá se usan potenciales conocidos).
+
 ## Conclusiones
 
 **Behler2016**:
@@ -103,4 +130,7 @@ si funcionará para dos o más elementos a la vez.
     - Requieren mucho test y validación. Los potenciales de Dinámica Molecular
     pueden fallar tremendamente si no se los construye de apropiadamente.
 
-**Mueller2020**:
+**Hong2019**:
+El desarrollo tradicional de potenciales empíricos puede beneficiarse de los 
+algoritmos geneticos de ML o se pueden obtener directamente potenciales de ML
+ajustando directamente la PES obtenida de la estructura electrónica.
