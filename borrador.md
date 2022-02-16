@@ -12,7 +12,11 @@ calculos de la estructura electrónica.
 **Mueller2020**: (Actualización a Behler2016). Acelerar simulaciones en la escala 
 atómica perdiendo poco en precisión.
 
-**Hong2019**:
+**Deringer2020**: Los métodos de mecánica cuántica ofrecen gren precisión y poder
+predictivo a partir de simulaciones en escalas atómicas, pero rápidamente alcanzan
+su límite cuando los sistemas electroquímicos se hacen más complejos, por ejemplo 
+cuando se estudian fases amorfas o cuando las reacciones que se quieren estudiar
+se encuentran en interfases entre electrodo y electrolito.
 
 ## Introducción
 
@@ -60,6 +64,23 @@ y=PES, f=potencial interatómico. Tres pasos:
         * flujo de trabajo automatizado: script de pre y post procesamiento de 
         los datos de, por ej, QE y LAMMPS,
         * error cuadrático medio. 
+
+**Deringer2020**:
++ Para complementar la gran cantidad de herramientas experimentales que hay para
+estudiar materiales relevantes para las distintas partes de las baterias se pueden
+realizar distintas simulaciones computacionales: DFT o FF (potenciales ajustados
+empíricamente).
++ Un modelado emergente y complementario que se presenta son los potenciales
+interatómicos de ML, rápidos y precisos creados a partir de datos de referencia
+provenientes de cálculos de mecánica cuántica.
++ Potenciales de ML:
+    - Aprendizaje supervisado, una tarea de regressión, dados los datos precisos
+    de energías y fuerzas para distintos puntos de la PES, se realiza el mejor
+    ajuste posible sin asumir formas funcionales específicas de la misma.
+    - Las propiedades más simples de la PES, como la repulsión a corta distancia,
+    deben ser aprendidas por el modelo.
+    - Figura 1: a) esquema del flujo de trabajo, b) distintos métodos.
+    - Son computacionalmente más costosos que los potenciales empíricos.
 
 ## Descriptores
 
@@ -118,6 +139,17 @@ si funcionará para dos o más elementos a la vez.
 conocidos (fig 3 también podría explicar _Symbolic regression_, son parecidos,
 aunque acá se usan potenciales conocidos).
 
+## Aplicaciones
+
+**Deringer2020**: Aplicaciones a baterias [Refs 47-52]
++ Difusión de Li en Li3PO4 y RDF (ML NN-type) [53].
++ Difusión de Li en C desordenado (ML GAP) [57]
++ Difusión de Li en distintas estructuras con LOTF (Learn on the fly) ML model [54]
++ a-LiSi (ANN) curvas de voltaje [47]
+Si son sólo este tipo de aplicaciones las que muestro, el título del seminario
+puede ser: **Potencials interatómicos de aprendizaje automatizado y su aplicación
+al estudio de baterias de Li**.
+
 ## Conclusiones
 
 **Behler2016**:
@@ -134,3 +166,5 @@ aunque acá se usan potenciales conocidos).
 El desarrollo tradicional de potenciales empíricos puede beneficiarse de los 
 algoritmos geneticos de ML o se pueden obtener directamente potenciales de ML
 ajustando directamente la PES obtenida de la estructura electrónica.
+
+**Deringer2020**: Leer de nuevo _What is next?_
