@@ -18,6 +18,10 @@ su límite cuando los sistemas electroquímicos se hacen más complejos, por eje
 cuando se estudian fases amorfas o cuando las reacciones que se quieren estudiar
 se encuentran en interfases entre electrodo y electrolito.
 
+**Mishin2021**: Mientras que los potenciales tradicionales se derivan de 
+conocimientos físicos, los potenciales de ML usan regresiones matemáticas de 
+altas dimensiones para interpolar entre las energías de referencia.
+
 ## Introducción
 
 **Behler2016**:
@@ -82,6 +86,16 @@ provenientes de cálculos de mecánica cuántica.
     - Figura 1: a) esquema del flujo de trabajo, b) distintos métodos.
     - Son computacionalmente más costosos que los potenciales empíricos.
 
+**Mishin2021**:
++ Muchas formas funcionales se han propuesto para potenciales interatómicos 
+clásicos para mejorar la precisión.
++ Potenciales interatómicos tradicionales:
+    - Figura 1: diagrama para explicar como funciona un potencial.
+    - Breve explicación de para que se puede usar cada potencial clásico (los 
+    nombrados también por Mueller2020).
+    - Cómo son los parametros de estos potenciales.
+    - Suelen ser transferibles.
+
 ## Descriptores
 
 **Behler2016**:
@@ -94,11 +108,30 @@ diferenciable.
     de los átomos hasta cierto radio de corte. Función de corte. Función
     radial y función angular. Función radial y angular centradas en el par.
     - Biespectro de la densidad de vecinos: Expansión del entorno en serie 
-    de harmónicos esferícos. Matriz del biespectro.
+    de harmónicos esféricos. Matriz del biespectro.
     - Superposición suave de las posiciones atómicas: Gaussianas en vez de
     funciones delta como en el caso anterior. Hay que incorporar la 
     invariancia rotacional "a mano".
     - Matriz de Coulomb: Autovalores de la matriz (relacionada a la distancia).
+
+**Mishin2021**: sección 3.2
++ Guardan información del entorno local en una cantidad fija de parámetros.
++ Algunos descriptores comunes:
+    - Descriptores Gaussianos: combinaciones de funciones gaussianas de 2 y 3
+    cuerpos multiplicadas por un radio de corte suave.
+    - Descriptores de Zernike: el entorno atómico es descripto mediante funciones
+    de Zernike, son computacionalmente más rápidos que el método del biespectro
+    y más fáciles de derivar.
+    - Tensor momento: se obtienen multiplicando funciones radiales por productos
+    externos de los vectores posición de los átomos vecinos.
+    - Superposición suave de las posiciones atómicas (SOAP): picos gaussianos de
+    densidad superpuestos, que son expandidos en harmónicos esféricos. Son los
+    más lentos computacionalmente.
+    - Análisis espectral de vecinos (SNAP): similar a SOAP pero con una expansión
+    en la base 4D de harmónicos.
+    - Expansión de clusters atómicos (ACE): El entorno atómico se representa por 
+    polinomios de funciones que forman una base completa, que son producto de una
+    función radial y una angular.
 
 ## Potenciales de ML
 
@@ -139,6 +172,14 @@ si funcionará para dos o más elementos a la vez.
 conocidos (fig 3 también podría explicar _Symbolic regression_, son parecidos,
 aunque acá se usan potenciales conocidos).
 
+**Mishin2021**:
++ _Redes neuronales_: Nodos organizados en capas. feed-forward. El vector con las
+propiedades (descriptor) entra en la input layer y la energía del sistema sale
+por la output layer. Las capas ocultas en el medio proveen parámetros ajustables.
++ _Physical informed ML potential_: Como _Algoritmos genéticos_ de Hong2019 y 
+_Symbolic regression_ de Mueller2020. Esto puede realizarse con cualquier 
+potencial ya conocido y con cualquier método de regresión.
+
 ## Aplicaciones
 
 **Deringer2020**: Aplicaciones a baterias [Refs 47-52]
@@ -168,3 +209,8 @@ algoritmos geneticos de ML o se pueden obtener directamente potenciales de ML
 ajustando directamente la PES obtenida de la estructura electrónica.
 
 **Deringer2020**: Leer de nuevo _What is next?_
+
+**Mishin2021**:
+Las predicciones de los potenciales de ML fuera del rango en el que fueron 
+entrenados pueden llevar a resultados que no son físicamente razonables. Los 
+potenciales de ML informados con física pueden mejorar la transferibilidad.
