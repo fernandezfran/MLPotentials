@@ -22,6 +22,10 @@ se encuentran en interfases entre electrodo y electrolito.
 conocimientos físicos, los potenciales de ML usan regresiones matemáticas de 
 altas dimensiones para interpolar entre las energías de referencia.
 
+**Zuo2020**: Los potenciales interatómicos de ML dan una relación cuantitativa
+entre el descriptor del entorno local y la PES. Hay un trade-off entre los grados
+de libertad del modelo a usar y el costo computacional que implica.
+
 ## Introducción
 
 **Behler2016**:
@@ -95,6 +99,14 @@ clásicos para mejorar la precisión.
     nombrados también por Mueller2020).
     - Cómo son los parametros de estos potenciales.
     - Suelen ser transferibles.
+
+**Zuo2020**:
++ DFT: preciso y transferible pero con alto costo y escaleo pobre
++ MD: mayor cantidad de átomos y tiempo de simulación pero menos precisión, la 
+parametrización de la PES está basada en distintos modelos físicos.
++ ML: se necesita gran cantidad de datos diversos de DFT que relacionen las 
+configuraciones atómicas con las energías, fuerzas, estres, para minimizar su 
+MSE.
 
 ## Descriptores
 
@@ -179,6 +191,18 @@ por la output layer. Las capas ocultas en el medio proveen parámetros ajustable
 + _Physical informed ML potential_: Como _Algoritmos genéticos_ de Hong2019 y 
 _Symbolic regression_ de Mueller2020. Esto puede realizarse con cualquier 
 potencial ya conocido y con cualquier método de regresión.
+
+**Zuo2020**:
++ La energía potencial se expresa como una suma de energías atómicas que dependen
+del entorno local de cada átomo.
++ Los potenciales (en odren cronológico):
+    - _Redes neuronales_ (NNP): Como descriptor usan ACSF (atom-centered symmetry
+    functions), lo mismo que Behler2016 pero resumido.
+    - _GAP_: Usa SOAP como descriptor.
+    - _SNAP_: Usa los coeficientes del biespectro de las funciones de densidad
+    de los átomos vecinos.
+    - _MTP_: tensores rotacionalmente covariantes para describir.
++ Figura 1: esquema para generar los datos de DFT y desarrollas el potencial ML.
 
 ## Aplicaciones
 
