@@ -215,6 +215,12 @@ Si son sólo este tipo de aplicaciones las que muestro, el título del seminario
 puede ser: **Potencials interatómicos de aprendizaje automatizado y su aplicación
 al estudio de baterias de Li**.
 
+**Gu2019**: [136-138]
++ NNP con algoritmos genéticos para descubrir nuevas estructuras amorfas de LiSi
+con menor energía que las cristalinas en las cual el potencial fue entrenado.
++ Voltaje y difusión de Li en a-Si.
++ Energía de intercalación de Li en grafito a-C.
+
 ## Conclusiones
 
 **Behler2016**:
