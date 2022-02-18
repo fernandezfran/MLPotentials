@@ -26,6 +26,12 @@ altas dimensiones para interpolar entre las energías de referencia.
 entre el descriptor del entorno local y la PES. Hay un trade-off entre los grados
 de libertad del modelo a usar y el costo computacional que implica.
 
+**Behler2017**: Los métodos de primeros principios están limitados a sistemas
+pequeños y su aceleración provino de la evolución en capacidad de computo. Los
+métodos de aprendizaje automático para describir las interacciones entre los 
+átomos, entrenados con datos de la estructura electrónica, pueden acelerar las
+simulaciones en ordenes de magnitud preservando la precisión.
+
 ## Introducción
 
 **Behler2016**:
@@ -107,6 +113,44 @@ parametrización de la PES está basada en distintos modelos físicos.
 + ML: se necesita gran cantidad de datos diversos de DFT que relacionen las 
 configuraciones atómicas con las energías, fuerzas, estres, para minimizar su 
 MSE.
+
+**Behler2017**:
++ Para evitar el calculo de la estructura electronica de sistemas cada vez más
+complejos y demandantes, es necesario mejorar los potenciales interatómicos para
+proveer directamente una relación entre las posiciones de los átomos y la energía 
+potencial. PES.
++ Algunos requerimientos importantes son:
+    - alta precisión, comparable a DFT,
+    - describir reacciones químicas y configuraciones arbitrarias,
+    - eficiencia, para poder simular sistemas grandes y complejos,
+    - distintos tipos de enlace e interacción,
+    - una estrategia para poder mejorarlos, validarlos y controlar su error,
+    - un protocolo de construcción automatizado y general,
+    - sin aproximaciones ad hoc.
++ ML Potenciales:
+    - definiciones de ML.
+    - definicion de MLP:
+        * la PES se expresa a traves de algún método de ML,
+        * se contruyen usando una referencia de datos consistentes de energías y
+        fuerzas,
+        * no contienen aproximaciones o suposiciones físicas más allá de los 
+        datos de la estructura electrónica elegidos para el entrenamiento.
+    - Pasos para contruir un MLP:
+        * método para calcular la estructura electrónica (cuello de botella),
+        * preparación de los datos, transformando las posiciones de los átomos
+        a algún descriptor,
+        * proceso de fiteo, ajuste de los parametros del modelo de ML,
+        * validación antes de utilizar el potencial
+    - Ventajas:
+        * errores del orden de unos pocos meV / atom.
+        * algunos ordenes de magnitud más rápidos, por lo que pueden ser 
+        utilizados en dinámica molecular.
+    - Desventajas:
+        * la contrucción del mismo es demandante, por la cantidad de datos de 
+        estructuras electronicas que tienen que ser generadas para distintas
+        configuraciones,
+        * son uno o dos ordenes de magnitud más lentos que los potenciales 
+        empíricos.
 
 ## Descriptores
 
@@ -204,6 +248,68 @@ del entorno local de cada átomo.
     - _MTP_: tensores rotacionalmente covariantes para describir.
 + Figura 1: esquema para generar los datos de DFT y desarrollas el potencial ML.
 
+**Behler2017**:
+_Redes neuronales_:
++ Una feed-forward NN consiste en un número de neuronas, o nodos, artificiales 
+acomodadas en capas. Los nodos de la capa de entrada se corresponden con las 
+componentes del vector descriptor. La energía potencial se encuntra en la capa 
+de salida, que es función del descriptor, donde la forma funcional está dada por
+el número de capas ocultas, que no tienen sentido físico, y del número de nodos
+en cada una de ellas entre la capa de entrada y la de salida.
++ Para obtener el valor en un nodo se realiza una combinación lineal de los 
+nodos de la capa anterior, donde se agrega un bias para acomodar el offset. Luego
+se le aplica una función de activación, que son funciones no-lineales continuas
+que tienen la propiedad de converger a valores constantes para argumentos muy
+positivos y muy negativos, mientras que en el medio tienen una región no-lineal
+que permite representar la forma arbitraria de la PES, en este caso.
++ La NN tiene una forma funcional jerárquica anidada de funciones de activación 
+que actúan sobre combinaciones lineales.
++ La energía del sistema, además de depender de los elementos del vector 
+descriptor, depende de los valores numéricos de los parametros de peso y de bias,
+que son determinados mediante una optimización iterativa del gradiente, 
+usualmente back-propagation, usando un conjunto de datos conocidos de la energía.
+Usando como función objetivo el RMSE de estas energías del conjunto de 
+entrenamiento.
++ Underfitting, reasonable fitting and overfitting.
++ Para afrontarse las limitaciones de las primeras NN:
+    - el número de coordenadas está relacionado al número de grados de libertad,
+    - la energía debe ser invariante ante traslaciones y rotaciones, ademas de
+    simetría de permutación,
+    - sólo pueden ser usadas para un tamaño fijo de problema.
+se utilizó una NN separada para cada átomo en el sistema. Cada una de estas redes
+neuronales atómicas provee de una contribución a la energía total en función del
+entorno local.
++ Distintos descriptores de ese entorno local ya discutidos en **Behler2016**
+(un poco se repite).
++ Las fuerzas se calculan usando analiticamente usando la derivada negativa de 
+la energía potencial, usando la regla de la cadena se deriva con respecto al 
+descriptor y luego el descriptor con respecto a la coordenada. Donde la derivada 
+de la energía con respecto al descriptor se obtiene de la estructura de la red 
+neuronal y la derivada del descriptor con respecto a la coordenada de su forma
+funcional.
++ No es necesario usar estas energías locales para entrenar el modelo.
++ Las interacciones a largo alcance pueden agregarse de manera separada, por
+ejemplo la electrostatica, usando una segunda red neuronal atómica entrenada para
+este proposito.
+
++ Challanges:
+    - La estructura de un potencial ML consiste escencialmente en dos partes:
+        * descriptor estructural,
+        * modelo de machine learning
+    y hay muchas posibilidades para ambas componentes.
+    - La transferibilidad es limitada, la incerteza de la predicción crece fuera 
+    del rango en el cual se entrenó.
+    - Se puede iterar el conjunto de entrenamiento, haciendo que el mismo crezca
+    al usar estructuras en los cuales dos NN distintas divergen entre ellas.
+
++ Validación:
+    - Las estructuras de interes (generadas por MD o MC) tienen que estar en el 
+    rango en el cual se entrenó el descriptor, si se detecta una extrapolación
+    se debe extender a esos valores la validez de la PES.
+    - Train/test split. Cross-validation.
+    - Identificar regiones de la PES insuficientemente sampleadas, comparando
+    las predicciones de distintos fits.
+
 ## Aplicaciones
 
 **Deringer2020**: Aplicaciones a baterias [Refs 47-52]
@@ -244,3 +350,15 @@ ajustando directamente la PES obtenida de la estructura electrónica.
 Las predicciones de los potenciales de ML fuera del rango en el que fueron 
 entrenados pueden llevar a resultados que no son físicamente razonables. Los 
 potenciales de ML informados con física pueden mejorar la transferibilidad.
+
+**Behler2017**:
+Estos métodos de ML pueden proveer potenciales precisos para sistemas reactivos
+de materiales complejos.
++ Desventajas:
+    - mucho esfuerzo de desarrollo,
+    - cuidado en la validación,
+    - conjunto de datos de entrenamientos grandes y costosos (decenas de miles 
+    de estructuras con su estructura electronica calculada),
+    - transferibilidad limitada a configuraciones que son muy diferentes,
+    - restricciones actuales a sistemas que contienen 4 elementos debido al 
+    crecimiento exponencial en la complejidad del espacio de configuraciones.
