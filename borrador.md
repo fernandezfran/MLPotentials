@@ -152,6 +152,43 @@ potencial. PES.
         * son uno o dos ordenes de magnitud más lentos que los potenciales 
         empíricos.
 
+**Deringer2019**:
++ Hay principalmente dos métodos de simulación utilizados en la actualidad:
+    - simulaciones de mecánica cuántica, la mayoria con DFT,
+    - "force field", potenciales interatómicos, donde se parametrizan las
+    interacciones entre los átomos con formas funcionales relativamente simples,
+    MD o MC que son más rápidos que DFT pero menos precisos y menos transferibles.
++ Potenciales de ML:
+    - Definición de ML, campo de AI.
+    - ML no hace ninguna suposición física sobre la forma de la PES, toda la 
+    información se obtiene del conjunto de datos de entrenamiento grande y 
+    preciso.
+    - Figura 1: base de datos, forma matemática de representar la estructura 
+    atómica, método de ML, regresión (aprendizaje). 
+    - Aprender de sistemas pequeños para poder acceder a escalas mayores.
+    - El dataset no sólo debe contener estructuras de mínima energía, si no que
+    también es necesario que contenga puntos de alta energía para que el modelo
+    sea capaz de interpolar entre ellas. Átomos a penas distorsionados de sus 
+    posiciones cristalinas. Se largan simulaciones de MD con la primera versión
+    del potencial y se agregan los puntos a los que llega para volver a entrenar,
+    evaluandolas con DFT.
+    - Representación de la estructura atómica (descriptores o features), centradas
+    en el átomo y que dan información del entorno local, hasta cierto radio de 
+    corte. Estos deben cumplir distintos requerimientos de simetría, permutación,
+    translación y rotación. ACSF, SOAP.
+    - Problema de aprendizaje supervisado, ya que los datos (estructuras) tienen
+    labels (energías de referencia). Una tarea de regresión, se las puede dividir
+    en tres:
+        * _Redes neuronales artificiales_: "Aprenden" el entorno local para que
+        cada átomo de su contribución a la energía.
+        * _Métodos basados en kernel_: Una propiedad atómica es interpolada como
+        combinación lineal de funciónes kernel, para medir que tan similar es una
+        configuración nueva a una de referencia. Los coeficientes de esta 
+        combinación que pesan cada kernel son obtenidos mediante un fiteo usando
+        algebra lineal simple.
+        * _Regresiones lineales_.
+    Tabla 1: referencia a cada uno de los métodos.
+
 ## Descriptores
 
 **Behler2016**:
@@ -362,3 +399,16 @@ de materiales complejos.
     - transferibilidad limitada a configuraciones que son muy diferentes,
     - restricciones actuales a sistemas que contienen 4 elementos debido al 
     crecimiento exponencial en la complejidad del espacio de configuraciones.
+
+**Deringer2019**:
+Los potenciales de ML actuales son "fragiles": si son fiteados para ser muy 
+precisos en una región de la PES, no lo son fuera de la misma. Los radios de 
+corte encierran las primeras esferas de coordinación, que son muy utiles para 
+materiales covalentes y metales, para mejorar esto ya se propuso dividir la NN 
+para que una se encarge de las fuerzas electrostaticas de largo alcance. No hay
+potencial de ML unificado que represente bien al mismo tiempo sólidos inorganicos
+y moleculas organicas (de la misma especie).
+Los potenciales de ML están emergiendo como una nueva herramienta para el 
+modelado de materiales y rapidamente se están convirtiendo lo suficientemente
+precisos y flexibles para ser aplicados en problemas reales de las ciencias de los
+materiales.
