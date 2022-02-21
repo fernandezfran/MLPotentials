@@ -249,6 +249,10 @@ rotaciones y permutaciones de átomos del mismo tipo.
 Estos se benefician de la localidad de las propiedades que se desean reproducir,
 por ejemplo, la energía total puede ser dividida en la energía local de cada átomo.
 
+Releer de _On representing chemical environments_ (Albert P. Bartók, 2013) los
+descriptores que vaya a explicar, aunque excede la intención y profundidad del
+seminario.
+
 ## Potenciales de ML
 
 **Behler2016**:
