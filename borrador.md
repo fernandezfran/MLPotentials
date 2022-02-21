@@ -32,6 +32,10 @@ métodos de aprendizaje automático para describir las interacciones entre los
 átomos, entrenados con datos de la estructura electrónica, pueden acelerar las
 simulaciones en ordenes de magnitud preservando la precisión.
 
+**Chen2020**: Las técnicas de ML se están utilizando para ayudar a encontrar 
+correlaciones entre materiales, entender la química y la física de estos y 
+acelerar su descubrimiento.
+
 ## Introducción
 
 **Behler2016**:
@@ -189,6 +193,13 @@ potencial. PES.
         * _Regresiones lineales_.
     Tabla 1: referencia a cada uno de los métodos.
 
+**Chen2020**:
++ ML es una rama de AI que se encarga del desarrollo de algoritmos y modelos que
+automáticamente pueden aprender patrones de los datos y realizar tareas sin una
+instrucción explicita.
++ Diseñar y descubrir materiales relacionados a la energía, donde una performance
+superior puede tener un impacto transformador en el cambio climatico.
+
 ## Descriptores
 
 **Behler2016**:
@@ -225,6 +236,18 @@ diferenciable.
     - Expansión de clusters atómicos (ACE): El entorno atómico se representa por 
     polinomios de funciones que forman una base completa, que son producto de una
     función radial y una angular.
+
+**Chen2020**:
++ Los descriptores de las estructuras deben ser invariantes ante traslaciones, 
+rotaciones y permutaciones de átomos del mismo tipo.
++ Una opción es construirlos a partir del entorno local de cada átomo:
+    - ACSF,
+    - coeficientes del biespectro,
+    - SOAP,
+    - tensor momento,
+    - CFID, classical force-field-inspired descriptors,
+Estos se benefician de la localidad de las propiedades que se desean reproducir,
+por ejemplo, la energía total puede ser dividida en la energía local de cada átomo.
 
 ## Potenciales de ML
 
@@ -364,6 +387,15 @@ con menor energía que las cristalinas en las cual el potencial fue entrenado.
 + Voltaje y difusión de Li en a-Si.
 + Energía de intercalación de Li en grafito a-C.
 
+**Chen2020**:
+Con potenciales de ML pueden llevarse a cabo simulaciones precisas de sistemas
+complejos en escalas de espacio/tiempo más grandes que las usuales en DFT. Los 
+mismos pueden aprenderze on-the-fly, usando AIMD.
++ Difusión en Li3PO4 (NNP).
++ Artrith (LixSi), GA y NNP.
++ eSNAP para Li3N (electrolito sólido).
++ Li en C desordenado (GAP).
+
 ## Conclusiones
 
 **Behler2016**:
@@ -412,3 +444,10 @@ Los potenciales de ML están emergiendo como una nueva herramienta para el
 modelado de materiales y rapidamente se están convirtiendo lo suficientemente
 precisos y flexibles para ser aplicados en problemas reales de las ciencias de los
 materiales.
+
+**Chen2020**:
+Los potenciales de aprendizaje automático están emergiendo como una nueva 
+herramienta poderosa que permite las simulaciones en escalas de tiempo largas en
+sistemas grandes, comparado con DFT y encontrandose cerca a su precisión, 
+proveyendo información crítica en la escala atómica de procesos difusivos y 
+transformaciones de fases relevantes en las baterias de ion-litio.
