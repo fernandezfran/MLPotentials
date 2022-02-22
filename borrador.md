@@ -200,6 +200,9 @@ instrucción explicita.
 + Diseñar y descubrir materiales relacionados a la energía, donde una performance
 superior puede tener un impacto transformador en el cambio climatico.
 
+**Botu2016**:
++ Figura 2: colección inicial de datos.
+
 ## Descriptores
 
 **Behler2016**:
