@@ -40,8 +40,8 @@
 \renewcommand{\textbf}[1]{\textcolor{nordblue}{\oldtextbf{#1}}}
 
 %%%%% caratula
-\title[Potencial de ML]{Potenciales interatómicos de aprendizaje automático y su 
-aplicación a baterias de litio}
+\title[Potenciales de ML]{Potenciales interatómicos de aprendizaje automático y 
+su aplicación a baterias de litio}
 \subtitle{Seminario de doctorado}
 \author[Francisco FERNANDEZ]{Francisco FERNANDEZ}
 \logo{
@@ -71,6 +71,43 @@ aplicación a baterias de litio}
 
     %%%% INTRODUCCION %%%%
     \section{Introducción}
+    
+    \begin{frame}
+        \frametitle{Introducción}
+
+        \begin{columns}
+            \column{0.5\textwidth}
+            \includegraphics[width=\columnwidth]{intro-bateria-carga.png}
+            \pause
+            \column{0.5\textwidth}
+            \includegraphics[width=\columnwidth]{intro-bateria-descarga.png}
+        \end{columns}
+
+	\end{frame}
+    
+    \begin{frame}
+        \frametitle{Introducción}
+        
+        Para complementar la gran cantidad de \textbf{herramientas experimentales}
+        (difracción de rayos x o neutrones, microscopía electrónica, resonancia
+        magnética nuclear, espectroscopía de rayos x, etc) que existen para 
+        estudiar materiales relevantes para las distintas partes de las baterias 
+        se han venido realizando \textbf{simulaciones computacionales}, 
+        principalmente:
+        \begin{enumerate}
+            \item Teoría del funcional de la densidad (DFT),
+            \item campos de fuerzas (FF) en MD, MC, kMC, etc.
+        \end{enumerate}
+
+        \ \pause
+
+        En este seminario se presenta un modelado emergente y complementario, los
+        \textbf{potenciales interatómicos de aprendizaje automático} creados a 
+        partir de datos de referencia provenientes de mecánica cuántica que buscan
+        tener eficiencia y precisión cercanas a las de los FF y de DFT, 
+        respectivamente.
+
+	\end{frame}
 
     \begin{frame}
         \frametitle{Introducción}
@@ -82,8 +119,11 @@ aplicación a baterias de litio}
         energía-potencial (PES)} y está completamente definido por su Hamiltoniano
         electrónico.
 
-        (AGREGAR IMAGEN DE PES Y HABLAR DE LO QUE SE PUEDE OBTENER A PARTIR DE 
-        ELLA)
+        \pause
+
+        \begin{center}
+            \includegraphics[width=0.35\textwidth]{intro-pes.png}
+        \end{center}
 
 	\end{frame}
 
@@ -186,18 +226,20 @@ aplicación a baterias de litio}
         automático (ML)}
 
         En el aprendizaje automático supervisado el objetivo es identificar una
-        función $f$ que prediga valores $y$ a partir de datos de entrada $x$.
-        
-        \pause
+        función $f$ (\textit{potencial interatómico que se desea aprender}) que
+        prediga valores $y$ (\textit{PES}) a partir de datos de entrada $x$ 
+        (\textit{configuraciones de los átomos}).
         
         $$
         y = f(x)
         $$
-        $x = $ configuraciones de los átomos,
 
-        $y = $ PES,
+        \pause
 
-        $f = $ potencial interatómico que se desea aprender.
+        \begin{center}
+            \includegraphics[width=0.75\textwidth]{intro-construccion.png}
+        \end{center}
+
 	\end{frame}
     
     \begin{frame}

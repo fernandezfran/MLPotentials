@@ -38,23 +38,6 @@ acelerar su descubrimiento.
 
 ## Introducción
 
-**Deringer2020**:
-+ Para complementar la gran cantidad de herramientas experimentales que hay para
-estudiar materiales relevantes para las distintas partes de las baterias se pueden
-realizar distintas simulaciones computacionales: DFT o FF (potenciales ajustados
-empíricamente).
-+ Un modelado emergente y complementario que se presenta son los potenciales
-interatómicos de ML, rápidos y precisos creados a partir de datos de referencia
-provenientes de cálculos de mecánica cuántica.
-+ Potenciales de ML:
-    - Aprendizaje supervisado, una tarea de regressión, dados los datos precisos
-    de energías y fuerzas para distintos puntos de la PES, se realiza el mejor
-    ajuste posible sin asumir formas funcionales específicas de la misma.
-    - Las propiedades más simples de la PES, como la repulsión a corta distancia,
-    deben ser aprendidas por el modelo.
-    - Figura 1: a) esquema del flujo de trabajo, b) distintos métodos.
-    - Son computacionalmente más costosos que los potenciales empíricos.
-
 **Mishin2021**:
 + Muchas formas funcionales se han propuesto para potenciales interatómicos 
 clásicos para mejorar la precisión.
