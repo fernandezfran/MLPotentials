@@ -35,6 +35,9 @@
 % Override palette coloring with secondary
 \setbeamercolor{subsection in head/foot}{bg=nordlblue,fg=nordwhite}
 
+% textbf con otro color
+\let\oldtextbf\textbf
+\renewcommand{\textbf}[1]{\textcolor{nordblue}{\oldtextbf{#1}}}
 
 %%%%% caratula
 \title[Potencial de ML]{Potenciales interatómicos de aprendizaje automático y su 
@@ -71,30 +74,175 @@ aplicación a baterias de litio}
 
     \begin{frame}
         \frametitle{Introducción}
+
+        En la aproximación de Born-Oppenheimer, donde los núcleos de los átomos
+        son considerados como partículas clásicas a la hora de determinar la 
+        función de onda electrónica, la energía de un estado electrónico a partir 
+        de las posiciones de los núcleos se conoce como la \textbf{superficie 
+        energía-potencial (PES)} y está completamente definido por su Hamiltoniano
+        electrónico.
+
+        (AGREGAR IMAGEN DE PES Y HABLAR DE LO QUE SE PUEDE OBTENER A PARTIR DE 
+        ELLA)
+
 	\end{frame}
 
     \subsection{Teoría del Funcional de la Densidad (DFT)}
 
 	\begin{frame}
         \frametitle{Introducción: Teoría del Funcional de la Densiadad (DFT)}
-		Here is some rambling text
-		\begin{enumerate}
-			\item List item 1
-			\item List item 2
-		\end{enumerate}
+        
+        La forma más precisa de obtener distintos puntos de la \textbf{PES} 
+        es a partir de cálculos de mecánica cuántica. Para estados estacionarios 
+        tenemos que la ecuación de Schrödinger es 
+        $$
+        \hat{H} |\psi\rangle = E |\psi\rangle
+        $$
+        %$$
+        %\hat{H} |\psi_n(t)\rangle = i\hbar\frac{\partial}{\partial t} |\psi_n(t)\rangle
+        %$$
+        \pause
+
+        Para aproximar la solución a esta ecuación, uno de los métodos más 
+        utilizados es la \textbf{Teoría del Funcional de la Densidad (DFT)}.
+
+        \pause
+
+        \begin{columns}
+            \column{0.5\textwidth}
+            \begin{itemize}
+                \item Preciso.
+            \end{itemize}
+
+            \column{0.5\textwidth}
+            \begin{itemize}
+                \item Algunos cientos de átomos y tiempos menores al ns.
+                \item Escalea al cubo de la cantidad de electrones.
+            \end{itemize}
+        \end{columns}
+        
 	\end{frame}
     
     \subsection{Potenciales interatómicos empíricos (FF)}
 	
     \begin{frame}
         \frametitle{Introducción: Potenciales interatómicos empíricos (FF)}
+
+        Una aproximación a la \textbf{PES} puede obtenerse a partir de potenciales
+        interatómicos o campos de fuerza (\textit{force fields}, \textbf{FF}), que
+        relacionan directamente, a través de una forma funcional, la configuración
+        atómica con la energía:
+        
+        \pause
+
+        \begin{itemize}
+            \item potencial de Coulomb,
+            \item potencial de Lennard-Jones,
+            \item método del átomo embebido (EAM),
+            \item ReaxFF.
+        \end{itemize}
+
+        \pause
+        
+        \begin{columns}
+            \column{0.5\textwidth}
+            \begin{itemize}
+                \item Escalas de tiempo y tamaños más grandes que DFT.
+            \end{itemize}
+
+            \column{0.5\textwidth}
+            \begin{itemize}
+                \item Precisión limitada por la forma funcional.
+            \end{itemize}
+        \end{columns}
+
 	\end{frame}
     
     \subsection{Potenciales interatómicos de aprendizaje automático (ML)}
+    
+    \begin{frame}
+        \frametitle{Introducción: Potenciales interatómicos de aprendizaje 
+        automático (ML)}
+
+        \begin{center}
+            \includegraphics[width=0.7\textwidth]{intro-definicion-ML.png}
+        \end{center}
+
+        \pause
+    
+        En física, química, ciencias de los materiales, los métodos de ML se
+        utilizan para buscar en grandes bases de datos relaciones ocultas entre 
+        la estructura atómica y alguna propiedad de interés.
+
+        \ \pause
+
+        El tema de este seminario es la aplicación de algunos de estos métodos
+        para ajustar la PES en función del entorno atómico.
+
+	\end{frame}
 	
     \begin{frame}
-        \frametitle{Introducción: Potenciales interatómico de aprendizaje 
+        \frametitle{Introducción: Potenciales interatómicos de aprendizaje 
         automático (ML)}
+
+        En el aprendizaje automático supervisado el objetivo es identificar una
+        función $f$ que prediga valores $y$ a partir de datos de entrada $x$.
+        
+        \pause
+        
+        $$
+        y = f(x)
+        $$
+        $x = $ configuraciones de los átomos,
+
+        $y = $ PES,
+
+        $f = $ potencial interatómico que se desea aprender.
+	\end{frame}
+    
+    \begin{frame}
+        \frametitle{Introducción: Potenciales interatómicos de aprendizaje 
+        automático (ML)}
+
+        Los \textbf{potenciales interatómicos de aprendizaje automático} buscan
+        combinar ambas ventajas de los FF (eficiencia) y de DFT (precisión).
+
+        \ \pause
+
+        Pueden definirse de la siguiente manera:
+        \begin{itemize}
+            \item Utiliza un método de ML para construir una relación funcional
+                entre las configuraciones atómicas y su energía,
+            \item no contienen aproximaciones físicas, a parte del método 
+                utilizado para obtener los datos de referencia,
+            \item se desarrolla utilizando un conjunto coherente de datos de
+                estructura electrónica.
+        \end{itemize}
+
+	\end{frame}
+    
+    \begin{frame}
+        \frametitle{Introducción: Potenciales interatómicos de aprendizaje 
+        automático (ML)}
+
+        Las posiciones atómicas necesitan ser transformadas a 
+        \textbf{descriptores} adecuados para los \textbf{métodos de ML} que deben 
+        cumplir con distintos \textit{constains} físicos:
+        \begin{enumerate}
+            \item Las contribuciones dominantes a la energía son de los átomos 
+                más cercanos entre sí.
+            \item La energía es invariante a permutaciones entre átomos del mismo 
+                tipo, rotaciones, traslaciones.
+            \item La PES varía suavemente con respecto a variaciones de las
+                posiciones atómicas.
+        \end{enumerate}
+
+        \ \pause
+
+        Existen muchos más descriptores y métodos de ML que se utilizan en el 
+        area de trabajo, en este seminario se presentarán sólo algunos de ellos
+        que fueron relevantes en el estudio de baterias de litio.
+
 	\end{frame}
 
     %%%% MÉTODOS %%%%

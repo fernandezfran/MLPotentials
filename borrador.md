@@ -38,51 +38,6 @@ acelerar su descubrimiento.
 
 ## Introducción
 
-**Behler2016**:
-+ Definiciones de ML.
-+ DFT PES a MD, definición de potencial interatómico.
-+ eficiencia (MD) vs precisión (DFT): ML toma ventajas de ambos.
-+ Definción de potencial de ML (3 puntos, discutido en el parrafo anterior).
-
-**Mueller2020**:
-+ Aproximación de Born-Oppenheimer para explicar la PES y que se puede obtener
-una vez que se la conoce.
-+ Solución a la eq de Schrödinger -> aproximación DFT (más usada).
-+ Ejemplos de potenciales interatómicos previos: Coulomb, LJ, EAM, Tersoff,
-MEAM, etc. ML para optimizar estos parametros (sólo mencionar).
-+ Aprendizaje automático supervisado (remarca). y = f(x), donde x=configuraciones,
-y=PES, f=potencial interatómico. Tres pasos:
-    - espacio de hipotesis,
-    - función objetivo (el error cuadrático de la energía, fuerzas, virial, con 
-    respecto a los datos de entrenamiento),
-    - la determinación de un método para buscar en el espacio de hipótesis espacio 
-    de hipótesis para las buenas funciones.
-+ _constrains_ físicos:
-    - interacción de corto alcance, se interactúa más con los átomos que están 
-    más cerca,
-    - invariancia frente a simetrías,
-    - varía suavemente.
-
-**Hong2019**:
-+ ML (inductivo) vs programación tradicional (deductivo).
-+ Cambios en las definiciones de AI, ML y DL (fig 1).
-+ Sistemas atómicos.
-+ Sección 2:
-    - Categorización de ML.
-    - Instancia de entrenamiento, hipótesis, hiperparametros, función costo, 
-    feauture y target (característica y objetivo?).
-    - Aprendizaje automático y Redes neuronals supervisado:
-        * pares de ejemplos input-output, 
-        * ejemplos de algoritmos,
-        * DNN definición (fig 2 para explicar y dar el ejemplo de potenciales).
-    - No supervisado:
-        * clustering y visualización,
-    - ML flujo de trabajo en ciencias de los materiales:
-        * Obtener datos de entrenamiento (DFT),
-        * flujo de trabajo automatizado: script de pre y post procesamiento de 
-        los datos de, por ej, QE y LAMMPS,
-        * error cuadrático medio. 
-
 **Deringer2020**:
 + Para complementar la gran cantidad de herramientas experimentales que hay para
 estudiar materiales relevantes para las distintas partes de las baterias se pueden
@@ -291,6 +246,21 @@ modelos. Hay poca investigación en esta área, sólo se probó en Cu y no se sa
 si funcionará para dos o más elementos a la vez.
 
 **Hong2019**:
+
+- Categorización de ML.
+- Instancia de entrenamiento, hipótesis, hiperparametros, función costo, 
+feauture y target (característica y objetivo?).
+- Aprendizaje automático y Redes neuronals supervisado:
+    * pares de ejemplos input-output, 
+    * ejemplos de algoritmos,
+    * DNN definición (fig 2 para explicar y dar el ejemplo de potenciales).
+- No supervisado:
+    * clustering y visualización,
+- ML flujo de trabajo en ciencias de los materiales:
+    * Obtener datos de entrenamiento (DFT),
+    * flujo de trabajo automatizado: script de pre y post procesamiento de 
+    los datos de, por ej, QE y LAMMPS,
+    * error cuadrático medio. 
 + _Algoritmos genéticos_: para encontrar parametros óptimos a potenciales 
 conocidos (fig 3 también podría explicar _Symbolic regression_, son parecidos,
 aunque acá se usan potenciales conocidos).
