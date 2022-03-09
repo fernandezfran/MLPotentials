@@ -38,24 +38,6 @@ acelerar su descubrimiento.
 
 ## Introducción
 
-**Mishin2021**:
-+ Muchas formas funcionales se han propuesto para potenciales interatómicos 
-clásicos para mejorar la precisión.
-+ Potenciales interatómicos tradicionales:
-    - Figura 1: diagrama para explicar como funciona un potencial.
-    - Breve explicación de para que se puede usar cada potencial clásico (los 
-    nombrados también por Mueller2020).
-    - Cómo son los parametros de estos potenciales.
-    - Suelen ser transferibles.
-
-**Zuo2020**:
-+ DFT: preciso y transferible pero con alto costo y escaleo pobre
-+ MD: mayor cantidad de átomos y tiempo de simulación pero menos precisión, la 
-parametrización de la PES está basada en distintos modelos físicos.
-+ ML: se necesita gran cantidad de datos diversos de DFT que relacionen las 
-configuraciones atómicas con las energías, fuerzas, estres, para minimizar su 
-MSE.
-
 **Behler2017**:
 + Para evitar el calculo de la estructura electronica de sistemas cada vez más
 complejos y demandantes, es necesario mejorar los potenciales interatómicos para
