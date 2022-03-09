@@ -241,11 +241,11 @@ su aplicación a baterias de litio}
         y = f(x)
         $$
 
-        \pause
-
-        \begin{center}
-            \includegraphics[width=0.75\textwidth]{intro-construccion.png}
-        \end{center}
+        \ \pause
+        
+        Los \textbf{potenciales interatómicos de aprendizaje automático (MLP)} 
+        buscan combinar ambas ventajas de los FF (eficiencia) y de DFT 
+        (precisión).
 
 	\end{frame}
     
@@ -253,12 +253,7 @@ su aplicación a baterias de litio}
         \frametitle{Introducción: Potenciales interatómicos de aprendizaje 
         automático (ML)}
 
-        Los \textbf{potenciales interatómicos de aprendizaje automático} buscan
-        combinar ambas ventajas de los FF (eficiencia) y de DFT (precisión).
-
-        \ \pause
-
-        Pueden definirse de la siguiente manera:
+        Los MLP pueden definirse de la siguiente manera:
         \begin{itemize}
             \item Utiliza un método de ML para construir una relación funcional
                 entre las configuraciones atómicas y su energía,
@@ -268,15 +263,53 @@ su aplicación a baterias de litio}
                 estructura electrónica.
         \end{itemize}
 
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Introducción: Potenciales interatómicos de aprendizaje 
+        automático (ML)}
+
+        Pasos en la construcción de un MLP:
+        \begin{enumerate}
+            \item Cálculos de la estructura electrónica,
+            \item preparación de los datos,
+            \item construcción de la PES,
+            \item validación y
+            \item aplicación en simulaciones.
+        \end{enumerate}
+
+        \begin{center}
+            \includegraphics[width=0.65\textwidth]{intro-construccion.png}
+        \end{center}
+
 	\end{frame}
     
     \begin{frame}
         \frametitle{Introducción: Potenciales interatómicos de aprendizaje 
         automático (ML)}
+        
+        \begin{columns}
+            \column{0.5\textwidth}
+            \textbf{1. Cálculos de la estructura electrónica}: Las estructuras deben
+            ser elegidas con cuidado para asegurarse que en la PES se encuentren 
+            todas las propiedades de interés
 
-        Las posiciones atómicas necesitan ser transformadas a 
-        \textbf{descriptores} adecuados para los \textbf{métodos de ML} que deben 
-        cumplir con distintos \textit{constains} físicos:
+            \column{0.5\textwidth}
+            \begin{center}
+                \includegraphics[width=0.65\textwidth]{intro-dft_data.png}
+            \end{center}
+        \end{columns}
+
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Introducción: Potenciales interatómicos de aprendizaje 
+        automático (ML)}
+
+        \textbf{2. Preparación de los datos}: Las posiciones atómicas necesitan 
+        ser transformadas a \textbf{descriptores} adecuados para los 
+        \textbf{métodos de ML} que deben cumplir con distintos \textit{constains} 
+        físicos:
         \begin{enumerate}
             \item Las contribuciones dominantes a la energía son de los átomos 
                 más cercanos entre sí.
@@ -291,6 +324,46 @@ su aplicación a baterias de litio}
     \begin{frame}
         \frametitle{Introducción: Potenciales interatómicos de aprendizaje 
         automático (ML)}
+        \begin{columns}
+            \column{0.35\textwidth}
+            \begin{center}
+                \includegraphics[width=0.65\columnwidth]{intro-fitting.png}
+            \end{center}
+
+            \column{0.65\textwidth}
+            \textbf{3. Construcción de la PES}: Elección del método de ML y 
+            proceso de ajuste de los parámetros para que minimizen, usualmente, 
+            el RMSE de las energías y de las fuerzas en el conjunto de 
+            entrenamiento.
+
+            \
+
+            \textit{underfitting, reasonable fit \& overfitting}.
+        \end{columns}
+
+	\end{frame}
+    
+    \begin{frame}
+        \frametitle{Introducción: Potenciales interatómicos de aprendizaje 
+        automático (ML)}
+
+        \textbf{4. Validación}:
+        \begin{enumerate}
+            \item \textit{split}: conjunto de entrenamiento / conjunto de testeo.
+            \item Se debe ir chequeando si las estructuras de interés están dentro
+                del rango de los descriptores usados en el conjunto de 
+                entrenamiento
+            \item Identificar regiones de la PES insuficientemente sampleadas 
+                (por ejemplo, comparando resultados de entrenamientos distintos).
+        \end{enumerate}
+
+	\end{frame}
+
+    \begin{frame}
+        \frametitle{Introducción: Potenciales interatómicos de aprendizaje 
+        automático (ML)}
+        
+        \textbf{5. Aplicación en simulaciones}:
 
         \begin{columns}
             \column{0.5\textwidth}
@@ -302,12 +375,6 @@ su aplicación a baterias de litio}
                 \includegraphics[width=0.3\columnwidth]{intro-ml.png}
             \end{center}
         \end{columns}
-
-        \ \pause
-
-        Existen muchos más descriptores y métodos de ML que se utilizan en el 
-        area de trabajo, en este seminario se presentarán sólo algunos de ellos
-        que fueron relevantes en el estudio de baterias de litio.
 
 	\end{frame}
 

@@ -38,44 +38,6 @@ acelerar su descubrimiento.
 
 ## Introducción
 
-**Behler2017**:
-+ Para evitar el calculo de la estructura electronica de sistemas cada vez más
-complejos y demandantes, es necesario mejorar los potenciales interatómicos para
-proveer directamente una relación entre las posiciones de los átomos y la energía 
-potencial. PES.
-+ Algunos requerimientos importantes son:
-    - alta precisión, comparable a DFT,
-    - describir reacciones químicas y configuraciones arbitrarias,
-    - eficiencia, para poder simular sistemas grandes y complejos,
-    - distintos tipos de enlace e interacción,
-    - una estrategia para poder mejorarlos, validarlos y controlar su error,
-    - un protocolo de construcción automatizado y general,
-    - sin aproximaciones ad hoc.
-+ ML Potenciales:
-    - definiciones de ML.
-    - definicion de MLP:
-        * la PES se expresa a traves de algún método de ML,
-        * se contruyen usando una referencia de datos consistentes de energías y
-        fuerzas,
-        * no contienen aproximaciones o suposiciones físicas más allá de los 
-        datos de la estructura electrónica elegidos para el entrenamiento.
-    - Pasos para contruir un MLP:
-        * método para calcular la estructura electrónica (cuello de botella),
-        * preparación de los datos, transformando las posiciones de los átomos
-        a algún descriptor,
-        * proceso de fiteo, ajuste de los parametros del modelo de ML,
-        * validación antes de utilizar el potencial
-    - Ventajas:
-        * errores del orden de unos pocos meV / atom.
-        * algunos ordenes de magnitud más rápidos, por lo que pueden ser 
-        utilizados en dinámica molecular.
-    - Desventajas:
-        * la contrucción del mismo es demandante, por la cantidad de datos de 
-        estructuras electronicas que tienen que ser generadas para distintas
-        configuraciones,
-        * son uno o dos ordenes de magnitud más lentos que los potenciales 
-        empíricos.
-
 **Deringer2019**:
 + Hay principalmente dos métodos de simulación utilizados en la actualidad:
     - simulaciones de mecánica cuántica, la mayoria con DFT,
@@ -272,7 +234,6 @@ que son determinados mediante una optimización iterativa del gradiente,
 usualmente back-propagation, usando un conjunto de datos conocidos de la energía.
 Usando como función objetivo el RMSE de estas energías del conjunto de 
 entrenamiento.
-+ Underfitting, reasonable fitting and overfitting.
 + Para afrontarse las limitaciones de las primeras NN:
     - el número de coordenadas está relacionado al número de grados de libertad,
     - la energía debe ser invariante ante traslaciones y rotaciones, ademas de
@@ -303,14 +264,6 @@ este proposito.
     del rango en el cual se entrenó.
     - Se puede iterar el conjunto de entrenamiento, haciendo que el mismo crezca
     al usar estructuras en los cuales dos NN distintas divergen entre ellas.
-
-+ Validación:
-    - Las estructuras de interes (generadas por MD o MC) tienen que estar en el 
-    rango en el cual se entrenó el descriptor, si se detecta una extrapolación
-    se debe extender a esos valores la validez de la PES.
-    - Train/test split. Cross-validation.
-    - Identificar regiones de la PES insuficientemente sampleadas, comparando
-    las predicciones de distintos fits.
 
 ## Aplicaciones
 
@@ -363,6 +316,17 @@ entrenados pueden llevar a resultados que no son físicamente razonables. Los
 potenciales de ML informados con física pueden mejorar la transferibilidad.
 
 **Behler2017**:
+- Ventajas:
+    * errores del orden de unos pocos meV / atom.
+    * algunos ordenes de magnitud más rápidos, por lo que pueden ser 
+    utilizados en dinámica molecular.
+- Desventajas:
+    * la contrucción del mismo es demandante, por la cantidad de datos de 
+    estructuras electronicas que tienen que ser generadas para distintas
+    configuraciones,
+    * son uno o dos ordenes de magnitud más lentos que los potenciales 
+    empíricos.
+
 Estos métodos de ML pueden proveer potenciales precisos para sistemas reactivos
 de materiales complejos.
 + Desventajas:
