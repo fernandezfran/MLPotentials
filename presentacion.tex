@@ -388,21 +388,240 @@ su aplicación a baterias de litio}
     \subsection{Descriptores}
     \begin{frame}
         \frametitle{Métodos: Descriptores}
+        ASCF: radial y angular
     \end{frame}
 
     \subsection{Distintos potenciales de ML}
     \begin{frame}
         \frametitle{Métodos: Distintos potenciales de ML}
+        NN Behler
     \end{frame}
 
     %%%% APLICACIONES %%%%
     \section{Aplicaciones en baterias de litio}
 
+    \subsection{Li$_3$PO$_4$}
+
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio}
+        \frametitle{Aplicaciones en baterias de litio: Li$_3$PO$_4$}
+            
+        El \textbf{fosfato de litio} (a-Li$_3$PO$_4$) es un electrolito sólido 
+        clásico, que puede ser fabricado en películas delgadas.
+            
+        \begin{columns}
+            \column{0.3\textwidth}
+            \begin{center}
+                \includegraphics[width=\columnwidth]{Li3PO4-estructura.png}
+            \end{center}
+        
+            \pause 
+
+            \column{0.7\textwidth}
+            \textbf{Base de datos}:
+            \begin{itemize}
+                \item Las energías de refencia fueron calculadas con DFT (VASP).
+                \item Celdas de 15-16, 29-32, 61-64 átomos.
+                \item Convergencia de la energía en 1 meV/átomo.
+
+                \pause
+
+                \item Se utilizaron distintas estructuras (38592) además de las 
+                    cristalinas:
+                    \begin{enumerate}
+                        \item \textit{frames} de trayectorias de MD entre 300 K
+                            y 4000 K,
+                        \item Estructuras con defectos, extrayendo átomos de Li o
+                            una unidad Li$_2$O de manera aleatoria, de los 
+                            \textit{frames} anteriores.
+                        \item Imagenes intermedias de NEB.
+                    \end{enumerate}
+                \item De las 38592 estructuras, se utilizaron 30874 
+                    ($\approx$80\%) en el entrenamiento y 7718 ($\approx$20\%) 
+                    para testear.
+            \end{itemize}
+        \end{columns}
+
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: Li$_3$PO$_4$}
+            
+        \textbf{Preparación de los datos y entrenamiento}:
+        \begin{itemize}
+            \item Se usaron los dos tipos de descriptores ASCF, radial y angular, 
+                con un radio de corte de 7\AA.
+            \item Redes neuronales para cada especie de átomo con 2 capas ocultas
+                y 5 nodos en cada una de ellas. Tangente hiperbólica como función
+                de activación. Función de activación lineal en el nodo de salida.
+        \end{itemize}
+
+        \pause
+
+        \begin{center}
+            \includegraphics[width=0.6\textwidth]{Li3PO4-rmse.png}
+        \end{center}
+
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: Li$_3$PO$_4$}
+
+        \begin{center}
+            \includegraphics[width=0.6\textwidth]{Li3PO4-training_testing.png}
+        \end{center}
+
+        RMSE de 5.0 meV/átomo y 5.6 meV/átomo para los conjuntos de entrenamiento
+        y testeo, respectivamente.
+
     \end{frame}
 
-    \subsection{Li$_3$PO$_4$}
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: Li$_3$PO$_4$}
+         
+        \textbf{Uso en simulaciones}
+
+        Templado simulado para obtener a-Li$_3$PO$_4$:
+        \begin{enumerate}
+            \item \textit{melting} a 6000 K por 15 ps de $\gamma$-Li$_3$PO$_4$, 
+            \item \textit{quenching} de 6000 K a 300 K a una tasa de 1 K/fs.
+        \end{enumerate}
+
+        \pause
+
+        \begin{columns}
+            \column{0.5\textwidth}
+            Energía de formación de vacancias
+            $$
+            E_f = E[V_{Li}] - E[bulk] + \mu_{Li}
+            $$
+
+            \pause 
+
+            \column{0.5\textwidth}
+            \begin{center}
+                \includegraphics[width=0.8\columnwidth]{Li3PO4-vacancias.png}
+            \end{center}
+        \end{columns}
+
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: Li$_3$PO$_4$}
+            
+        \textbf{Uso en simulaciones}
+
+        Difusión de Li en la estructura con una vacancia.
+        
+        \begin{columns}
+            \column{0.3\textwidth}
+            \begin{center}
+                \includegraphics[width=\columnwidth]{Li3PO4-neb.png}
+            \end{center}
+
+            \column{0.7\textwidth}
+            Se obtuvieron 46 caminos de migración para los átomos de Li mediante
+            la técnica de NEB.
+
+            \ \pause
+
+            La barrera de energía promedio con DFT es de 0.58 eV y con NN es 
+            0.57 eV.
+        \end{columns}
+
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: Li$_3$PO$_4$}
+            
+        \textbf{Uso en simulaciones}
+
+        Difusión de Li en la estructura con una vacancia.
+        
+        \begin{columns}
+            \column{0.6\textwidth}
+            Usando los NEBs obtenidos, se realizan simulaciones de kMC
+            $$
+            p = k \exp \left( - \frac{\Delta E_{ij}}{k_B T} \right),
+            $$
+            $k = 10^{13} s^{-1}$
+
+            $100 \times 10^6$ MC eventos realizados a distintas temperaturas.
+
+            \pause
+
+            $$
+            D = \frac{1}{6} \lim_{\Delta t \rightarrow \infty} \langle MSD \rangle
+            = \frac{1}{6} \lim_{\Delta t \rightarrow \infty} \frac{\langle (r_i(t_0 + \Delta t) - r_i(t_0))^2 \rangle}{\Delta t}
+            $$
+
+            \pause 
+
+            \column{0.4\textwidth}
+            Energías de activación: 0.602 eV y 0.561 eV, para los NEBs resultantes 
+            de NN y DFT.
+            \begin{center}
+                \includegraphics[width=\columnwidth]{Li3PO4-kMC-arrhenius.png}
+            \end{center}
+        \end{columns}
+
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: Li$_3$PO$_4$}
+            
+        \textbf{Uso en simulaciones}
+
+        Difusión de Li en la estructura con una vacancia.
+        
+        \begin{columns}
+            \column{0.6\textwidth}
+            Simulaciones de dinámica molecular (\textit{ab-initio} y NN):
+            \begin{itemize}
+                \item ensamble NVT,
+                \item paso temporal de 2 fs,
+                \item equilibración de 10 ps,
+                \item 50 ps para los cálculos (1 ns para NN).
+            \end{itemize}
+
+            \column{0.4\textwidth}
+            Energías de activación: 0.59 eV para MD NN (0.602 eV y 0.561 eV en 
+            kMC). 
+            \begin{center}
+                \includegraphics[width=\columnwidth]{Li3PO4-kMC-arrhenius.png}
+            \end{center}
+        \end{columns}
+
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: Li$_3$PO$_4$}
+            
+        \textbf{Uso en simulaciones}
+
+        Difusión de Li en la estructura con una vacancia.
+        
+        \begin{columns}
+            \column{0.6\textwidth}
+            Simulación de dinámica molecular con el potencial NN:
+            \begin{itemize}
+                \item a-Li$_{2.906}$PO$_4$,
+                \item 1006 átomos,
+                \item 100 ps,
+                \item 600 K, 700 K, 800 K, 1000 K, 1200 K.
+            \end{itemize}
+
+            Energía de activación obtenida: 0.55 eV
+
+            \column{0.4\textwidth}
+            Energías de activación: 0.58 eV (ion-exchage), 0.57 eV (mask) y
+            0.55 eV (impedance spectroscopy).
+            \begin{center}
+                \includegraphics[width=\columnwidth]{Li3PO4-MD-arrhenius.png}
+            \end{center}
+        \end{columns}
+
+    \end{frame}
+
     \subsection{LiC}
     \subsection{Li$_x$Si}
     
