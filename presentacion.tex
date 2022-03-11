@@ -389,12 +389,16 @@ su aplicación a baterias de litio}
     \begin{frame}
         \frametitle{Métodos: Descriptores}
         ASCF: radial y angular
+        kernel gaussiano
+        SOAP
+        power spectrum
     \end{frame}
 
     \subsection{Distintos potenciales de ML}
     \begin{frame}
         \frametitle{Métodos: Distintos potenciales de ML}
         NN Behler
+        GAP
     \end{frame}
 
     %%%% APLICACIONES %%%%
@@ -623,6 +627,191 @@ su aplicación a baterias de litio}
     \end{frame}
 
     \subsection{LiC}
+    
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: LiC}
+            
+        Los ánodos de las baterias de litio suelen ser de \textbf{grafito} u otras
+        nanoestructuras de carbono.
+        
+        \begin{columns}
+            \column{0.4\textwidth}
+            \begin{center}
+                \includegraphics[width=\columnwidth]{LiC-metodo.png}
+            \end{center}
+
+            \pause
+
+            \column{0.6\textwidth}
+            Ya está desarrollado un potencial GAP para estructuras de carbono, 
+            el objetivo de este trabajo es agregar la interacción de los átomos
+            de Li como una extensión.
+            
+            \ \pause
+
+            Fitean las diferencias en energía que se dan al incertar Li,
+            $$
+            \Delta E_{DFT} = E_{DFT}(Li_xC) - E_{DFT}(C_x) - E_{DFT}(Li),
+            $$
+            con un potencial GAP.
+
+        \end{columns}
+
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: LiC}
+            
+        Los ánodos de las baterias de litio suelen ser de \textbf{grafito} u otras
+        nanoestructuras de carbono.
+        
+        \begin{columns}
+            \column{0.4\textwidth}
+            \begin{center}
+                \includegraphics[width=\columnwidth]{LiC-metodo.png}
+            \end{center}
+
+            \column{0.6\textwidth}
+            Cuatro descriptores:
+            \begin{enumerate}
+                \item Un término de dos cuerpos para la interacción Li-C, 
+                \item otro para las interacciones Li-Li,
+                \item un término de tres cuerpos para los ángulos de un átomo 
+                    central de Li y dos vecinos de C (hasta acá kernel gaussiano),
+                \item un término de muchos cuerpos para todos los vecinos de C
+                    de un átomo de Li hasta un radio de corte (SOAP).
+            \end{enumerate}
+        \end{columns}
+
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: LiC}
+        
+        \begin{columns}
+            \column{0.6\textwidth}
+            El método directo no da buenos resultados para la interacción Li-Li.
+
+            Esto se debe a que el cambio de energía al insertar un átomo de Li
+            es $\approx$1 eV, mientras que la interacción Li-Li es $\approx$0.1 eV.
+
+            \ \pause 
+
+            Se introduce un potencial efectivo para la interacción Li-Li (GAP de 
+            2 cuerpos).
+
+            \column{0.4\textwidth}
+            \begin{center}
+                \includegraphics[width=\columnwidth]{LiC-LiLi_efectivo.png}
+            \end{center}
+        \end{columns}
+
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: LiC}
+        
+        \begin{columns}
+            \column{0.6\textwidth}
+            \textbf{Base de datos}:
+            \begin{itemize}
+                \item Átomos de Li en posiciones aleatorias de estructuras de:
+                    \begin{enumerate}
+                        \item grafito desordenado (24 átomos y 561 estructuras), 
+                        \item grafeno (24 átomos y 192 estructuras), y
+                        \item carbono amorfo (64 átomos y 1664 estructuras)
+                    \end{enumerate}
+                    hasta un 10\% de concentración.
+            \end{itemize}
+
+            \column{0.4\textwidth}
+            \begin{center}
+                \includegraphics[width=0.7\columnwidth]{LiC-fuerza_1_atomo_de_Li.png}
+            \end{center}
+        \end{columns}
+
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: LiC}
+        
+        \begin{columns}
+            \column{0.5\textwidth}
+            \begin{center}
+                \includegraphics[width=\columnwidth]{LiC-training_testing.png}
+            \end{center}
+
+            \column{0.5\textwidth}
+            RMSE (MAE) de la energía de intercalación de Li: 0.37 (0.29) eV/átomo
+
+            \ \pause
+
+            Dividido por grupos (RMSE):
+            \begin{itemize}
+                \item a-C: 0.43 eV/átomo,
+                \item grafito: 0.17 eV/átomo.
+                \item grafeno: 0.19 eV/átomo.
+            \end{itemize}
+        \end{columns}
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: LiC}
+
+        \textbf{Absorsión de un átomo de Li y difusión entre dos mínimos de 
+        potencial}
+        
+        \begin{center}
+            \includegraphics[width=0.3\textwidth]{LiC-sites.png}
+        \end{center}
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: LiC}
+
+        \textbf{Simulaciones de dinámica molecular}
+
+        4 átomos de Li en una estructura de grafito desordenada.
+        
+        \begin{columns}
+            \column{0.5\textwidth}
+            \begin{itemize}
+                \item Temperatura: 1000 K
+                \item Paso temporal: 1 fs
+                \item Pasos de equilibración: 25 ps 
+                \item Pasos de sampleo: 50 ps
+            \end{itemize}
+
+            \ \pause
+
+            Número de coordinación Li-C: 7.3 (DFT), 6.9 (GAP).
+
+            \column{0.5\textwidth}
+            \begin{center}
+                \includegraphics[width=\columnwidth]{LiC-MD-results.png}
+            \end{center}
+        \end{columns}
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: LiC}
+
+        \textbf{Simulaciones de dinámica molecular}
+
+        4 átomos de Li en una estructura de grafito desordenada.
+        
+        \begin{columns}
+            \column{0.35\textwidth}
+            \begin{center}
+                \includegraphics[width=\columnwidth]{LiC-VDOS.png}
+            \end{center}
+            
+            \column{0.65\textwidth}
+            \textit{Velocity sensities of states} usando la función de 
+            autocorrelación de las velocidades.
+        \end{columns}
+    \end{frame}
+
     \subsection{Li$_x$Si}
     
     %%%% CONCLUSIONES %%%%
