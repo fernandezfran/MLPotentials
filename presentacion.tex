@@ -389,6 +389,7 @@ su aplicación a baterias de litio}
     \begin{frame}
         \frametitle{Métodos: Descriptores}
         ASCF: radial y angular
+        RDF y ADF (expandidas con polinomios de Chebyshev)
         kernel gaussiano
         SOAP
         power spectrum
@@ -813,6 +814,161 @@ su aplicación a baterias de litio}
     \end{frame}
 
     \subsection{Li$_x$Si}
+    
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: Li$_x$Si}
+        
+        El \textbf{silicio} amorfo es un potencial material de ánodo de alta
+        capacidad para laas baterias de litio.
+        
+        \begin{columns}
+            \column{0.65\textwidth}
+            \begin{center}
+                \includegraphics[width=\columnwidth]{LiSi-metodo.png}
+            \end{center}
+
+            \pause
+            
+            \column{0.35\textwidth}
+            \begin{itemize}
+                \item Potencial NN de 2 capas ocultas con 15 nodos cada una.
+                \item 90\% / 10\% de datos de referencia DFT para entrenamiento / 
+                    testing.
+                \item Descriptores: RDF y ADF con $\omega_{Li} = -1$, 
+                    $\omega_{Si} = 1$ y $N = 11$ (polinomios de Chebyshev).
+            \end{itemize}
+        \end{columns}
+            
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: Li$_x$Si}
+        
+        El \textbf{silicio} amorfo es un potencial material de ánodo de alta
+        capacidad para laas baterias de litio.
+        
+        \begin{columns}
+            \column{0.65\textwidth}
+            \begin{center}
+                \includegraphics[width=\columnwidth]{LiSi-metodo.png}
+            \end{center}
+
+            \column{0.35\textwidth}
+            \begin{itemize}
+                \item Generación de estructuras amorfas:
+                    \begin{enumerate}
+                        \item Potencial NN con 725 estructuras de DFT (estructuras
+                            cristalinas, escaleo isotrópico, vacancias).
+                        \item Mediante algorítmos genéticos se busca que átomo 
+                            de Li extraer en un proceso de delitiación.
+                    \end{enumerate}
+            \end{itemize}
+        \end{columns}
+            
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: Li$_x$Si}
+        
+        El \textbf{silicio} amorfo es un potencial material de ánodo de alta
+        capacidad para laas baterias de litio.
+        
+        \begin{columns}
+            \column{0.65\textwidth}
+            \begin{center}
+                \includegraphics[width=\columnwidth]{LiSi-metodo.png}
+            \end{center}
+
+            \column{0.35\textwidth}
+            Tamaño de población de 32 y razón de mutación del 10\%. Al menos 30 
+            estructuras son optimizadas por DFT para obtener la estructura inicial
+            del siguiente paso.
+        \end{columns}
+            
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: Li$_x$Si}
+        
+        El \textbf{silicio} amorfo es un potencial material de ánodo de alta
+        capacidad para laas baterias de litio.
+        
+        \begin{columns}
+            \column{0.65\textwidth}
+            \begin{center}
+                \includegraphics[width=\columnwidth]{LiSi-metodo.png}
+            \end{center}
+
+            \column{0.35\textwidth}
+            \begin{center}
+                \includegraphics[width=\columnwidth]{LiSi-optimizacion_de_la_energia.png}
+            \end{center}
+        \end{columns}
+            
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: Li$_x$Si}
+        
+        \textbf{Simulaciones de dinámica molecular}
+        
+        \begin{columns}
+            \column{0.5\textwidth}
+            \begin{itemize}
+                \item Ensamble NVT, paso temporal de 2 fs y algorítmo de Verlet.
+                \item Se reentrenó el potencial con 45000 estructuras de clusters, 
+                    bordes y con distintos frames de dinámicas a altas
+                    temperaturas.
+                \item RMSE: 6.3 (7.7) meV/atom, entrenamiento (testing).
+            \end{itemize}
+
+            \pause
+
+            \column{0.5\textwidth}
+            \begin{center}
+                \includegraphics[width=\columnwidth]{LiSi-energias_de_formacion.png}
+            \end{center}
+        \end{columns}
+            
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: Li$_x$Si}
+        
+        \textbf{Simulaciones de dinámica molecular}
+        
+        \begin{columns}
+            \column{0.7\textwidth}
+            \begin{center}
+                \includegraphics[width=\columnwidth]{LiSi-rdfs.png}
+            \end{center}
+
+            \column{0.3\textwidth}
+            \begin{itemize}
+                \item Orden de largo alcance en GA. 
+            \end{itemize}
+        \end{columns}
+            
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Aplicaciones en baterias de litio: Li$_x$Si}
+        
+        \textbf{Simulaciones de dinámica molecular}
+        
+        \begin{columns}
+            \column{0.55\textwidth}
+            \begin{center}
+                \includegraphics[width=\columnwidth]{LiSi-potencial_vs_Li.png}
+            \end{center}
+
+            \column{0.45\textwidth}
+            \begin{itemize}
+                \item  
+            \end{itemize}
+        \end{columns}
+            
+    \end{frame}
     
     %%%% CONCLUSIONES %%%%
     \section{Conclusiones}
