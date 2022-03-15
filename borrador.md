@@ -36,10 +36,6 @@ simulaciones en ordenes de magnitud preservando la precisión.
 correlaciones entre materiales, entender la química y la física de estos y 
 acelerar su descubrimiento.
 
-## Introducción
-
-roughly DONE.
-
 ## Descriptores
 
 **Behler2016**:
@@ -88,10 +84,6 @@ rotaciones y permutaciones de átomos del mismo tipo.
     - CFID, classical force-field-inspired descriptors,
 Estos se benefician de la localidad de las propiedades que se desean reproducir,
 por ejemplo, la energía total puede ser dividida en la energía local de cada átomo.
-
-Releer de _On representing chemical environments_ (Albert P. Bartók, 2013) los
-descriptores que vaya a explicar, aunque excede la intención y profundidad del
-seminario.
 
 ## Potenciales de ML
 
@@ -219,32 +211,6 @@ este proposito.
     del rango en el cual se entrenó.
     - Se puede iterar el conjunto de entrenamiento, haciendo que el mismo crezca
     al usar estructuras en los cuales dos NN distintas divergen entre ellas.
-
-## Aplicaciones
-
-**Deringer2020**: Aplicaciones a baterias [Refs 47-52]
-+ Difusión de Li en Li3PO4 y RDF (ML NN-type) [53].
-+ Difusión de Li en C desordenado (ML GAP) [57]
-+ Difusión de Li en distintas estructuras con LOTF (Learn on the fly) ML model [54]
-+ a-LiSi (ANN) curvas de voltaje [47]
-Si son sólo este tipo de aplicaciones las que muestro, el título del seminario
-puede ser: **Potencials interatómicos de aprendizaje automatizado y su aplicación
-al estudio de baterias de Li**.
-
-**Gu2019**: [136-138]
-+ NNP con algoritmos genéticos para descubrir nuevas estructuras amorfas de LiSi
-con menor energía que las cristalinas en las cual el potencial fue entrenado.
-+ Voltaje y difusión de Li en a-Si.
-+ Energía de intercalación de Li en grafito a-C.
-
-**Chen2020**:
-Con potenciales de ML pueden llevarse a cabo simulaciones precisas de sistemas
-complejos en escalas de espacio/tiempo más grandes que las usuales en DFT. Los 
-mismos pueden aprenderze on-the-fly, usando AIMD.
-+ Difusión en Li3PO4 (NNP).
-+ Artrith (LixSi), GA y NNP.
-+ eSNAP para Li3N (electrolito sólido).
-+ Li en C desordenado (GAP).
 
 ## Conclusiones
 
