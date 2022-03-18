@@ -36,55 +36,6 @@ simulaciones en ordenes de magnitud preservando la precisión.
 correlaciones entre materiales, entender la química y la física de estos y 
 acelerar su descubrimiento.
 
-## Descriptores
-
-**Behler2016**:
-+ Descriptor definido a partir de las configuraciones de los átomos.
-+ Requerimientos del descriptor: translación, rotacion, permutación...
-simetrías. Independiente del tamaño del problema. Rápido de calcular y 
-diferenciable.
-+ Algunos descriptores:
-    - Funciones de simetría centradas en el átomo: Entorno químico, posiciones
-    de los átomos hasta cierto radio de corte. Función de corte. Función
-    radial y función angular. Función radial y angular centradas en el par.
-    - Biespectro de la densidad de vecinos: Expansión del entorno en serie 
-    de harmónicos esféricos. Matriz del biespectro.
-    - Superposición suave de las posiciones atómicas: Gaussianas en vez de
-    funciones delta como en el caso anterior. Hay que incorporar la 
-    invariancia rotacional "a mano".
-    - Matriz de Coulomb: Autovalores de la matriz (relacionada a la distancia).
-
-**Mishin2021**: sección 3.2
-+ Guardan información del entorno local en una cantidad fija de parámetros.
-+ Algunos descriptores comunes:
-    - Descriptores Gaussianos: combinaciones de funciones gaussianas de 2 y 3
-    cuerpos multiplicadas por un radio de corte suave.
-    - Descriptores de Zernike: el entorno atómico es descripto mediante funciones
-    de Zernike, son computacionalmente más rápidos que el método del biespectro
-    y más fáciles de derivar.
-    - Tensor momento: se obtienen multiplicando funciones radiales por productos
-    externos de los vectores posición de los átomos vecinos.
-    - Superposición suave de las posiciones atómicas (SOAP): picos gaussianos de
-    densidad superpuestos, que son expandidos en harmónicos esféricos. Son los
-    más lentos computacionalmente.
-    - Análisis espectral de vecinos (SNAP): similar a SOAP pero con una expansión
-    en la base 4D de harmónicos.
-    - Expansión de clusters atómicos (ACE): El entorno atómico se representa por 
-    polinomios de funciones que forman una base completa, que son producto de una
-    función radial y una angular.
-
-**Chen2020**:
-+ Los descriptores de las estructuras deben ser invariantes ante traslaciones, 
-rotaciones y permutaciones de átomos del mismo tipo.
-+ Una opción es construirlos a partir del entorno local de cada átomo:
-    - ACSF,
-    - coeficientes del biespectro,
-    - SOAP,
-    - tensor momento,
-    - CFID, classical force-field-inspired descriptors,
-Estos se benefician de la localidad de las propiedades que se desean reproducir,
-por ejemplo, la energía total puede ser dividida en la energía local de cada átomo.
-
 ## Potenciales de ML
 
 **Behler2016**:
@@ -211,7 +162,3 @@ este proposito.
     del rango en el cual se entrenó.
     - Se puede iterar el conjunto de entrenamiento, haciendo que el mismo crezca
     al usar estructuras en los cuales dos NN distintas divergen entre ellas.
-
-## Conclusiones
-
-**Deringer2020**: Leer de nuevo _What is next?_

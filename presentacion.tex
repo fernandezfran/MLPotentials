@@ -8,6 +8,8 @@
 \usepackage[outdir=./figs/]{epstopdf}
 \graphicspath{ {./figs/} }
 
+\usepackage{amsmath} % función de corte
+
 
 %%%%% definición de colores para el tema
 \usetheme{Madrid}
@@ -265,9 +267,13 @@ su aplicación a baterias de litio}
 
     \end{frame}
 
+    %%%% POTENCIALES INTERATÓMICOS DE APRENDIZAJE AUTOMÁTICO %%%%
+    \section{Potenciales interatómicos de aprendizaje automático}
+
+    \subsection{Construcción}
+
     \begin{frame}
-        \frametitle{Introducción: Potenciales interatómicos de aprendizaje 
-        automático (ML)}
+        \frametitle{Potenciales interatómicos de aprendizaje automático: Construcción}
 
         Pasos en la construcción de un MLP:
         \begin{enumerate}
@@ -285,8 +291,7 @@ su aplicación a baterias de litio}
 	\end{frame}
     
     \begin{frame}
-        \frametitle{Introducción: Potenciales interatómicos de aprendizaje 
-        automático (ML)}
+        \frametitle{Potenciales interatómicos de aprendizaje automático: Construcción}
         
         \begin{columns}
             \column{0.5\textwidth}
@@ -303,8 +308,7 @@ su aplicación a baterias de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Introducción: Potenciales interatómicos de aprendizaje 
-        automático (ML)}
+        \frametitle{Potenciales interatómicos de aprendizaje automático: Construcción}
 
         \textbf{2. Preparación de los datos}: Las posiciones atómicas necesitan 
         ser transformadas a \textbf{descriptores} adecuados para los 
@@ -322,8 +326,8 @@ su aplicación a baterias de litio}
 	\end{frame}
     
     \begin{frame}
-        \frametitle{Introducción: Potenciales interatómicos de aprendizaje 
-        automático (ML)}
+        \frametitle{Potenciales interatómicos de aprendizaje automático: Construcción}
+
         \begin{columns}
             \column{0.35\textwidth}
             \begin{center}
@@ -344,8 +348,7 @@ su aplicación a baterias de litio}
 	\end{frame}
     
     \begin{frame}
-        \frametitle{Introducción: Potenciales interatómicos de aprendizaje 
-        automático (ML)}
+        \frametitle{Potenciales interatómicos de aprendizaje automático: Construcción}
 
         \textbf{4. Validación}:
         \begin{enumerate}
@@ -360,8 +363,7 @@ su aplicación a baterias de litio}
 	\end{frame}
 
     \begin{frame}
-        \frametitle{Introducción: Potenciales interatómicos de aprendizaje 
-        automático (ML)}
+        \frametitle{Potenciales interatómicos de aprendizaje automático: Construcción}
         
         \textbf{5. Aplicación en simulaciones}:
 
@@ -378,26 +380,101 @@ su aplicación a baterias de litio}
 
 	\end{frame}
 
-    %%%% MÉTODOS %%%%
-    \section{Métodos}
-
-    \begin{frame}
-        \frametitle{Métodos}
-    \end{frame}
-
     \subsection{Descriptores}
     \begin{frame}
-        \frametitle{Métodos: Descriptores}
-        ASCF: radial y angular
-        RDF y ADF (expandidas con polinomios de Chebyshev)
-        kernel gaussiano
-        SOAP
-        power spectrum
+        \frametitle{Potenciales interatómicos de aprendizaje automático: Descriptores}
+        
+        \begin{itemize}
+            \item Se tiene que obtener el mismo output si las estructuras son 
+                equivalentes (en los potenciales clásicos viene dado por la 
+                expresión matemática).
+            \item Correspondencia 1 a 1 entre estructura y los valores del 
+                descriptor.
+            \item Deben ser rápidos de calcular y diferenciables con respecto a 
+                las posiciones atómicas.
+        \end{itemize}
+
     \end{frame}
 
-    \subsection{Distintos potenciales de ML}
     \begin{frame}
-        \frametitle{Métodos: Distintos potenciales de ML}
+        \frametitle{Potenciales interatómicos de aprendizaje automático: Descriptores}
+
+        \textbf{Funciones de simetría centradas en el átomo (ACSF)}: El entorno
+        químico está caracterizado por descriptores que dependen de las posiciones
+        de los átomos hasta un radio de corte $R_c$
+
+
+        \[ f_c(R_{ij}) = 
+            \begin{cases}
+                \frac{1}{2}\left( \cos\left(\frac{\pi R_{ij}}{R_c}\right) + 1 \right) & R_{ij} \leq R_c \\
+                0 & R_{ij} > R_c
+            \end{cases}
+        \]
+        
+        \pause
+
+        \textbf{Función radial}:
+        $$
+        G_i^{atom,rad} = \sum_{j=1}^{N_{atom}} e^{- \eta (R_{ij} - R_s)^2} \cdot f_c(R_{ij})
+        $$
+
+        \textbf{Función angular}
+        $$
+        G_i^{atom,rad} = 2^{1-\xi}  \sum_{j,k \neq i}^{all} (1 + \lambda \cos(\theta_{ijk}))^{\xi} e^{- \eta (R_{ij}^2 + R_{ik}^2 + R_{jk}^2)} \cdot f_c(R_{ij}) \cdot f_c(R_{ik}) \cdot f_c(R_{jk})
+        $$
+
+        \pause
+
+        Usualmente se usan entre 50-100 funciones de simetría por átomo varíando
+        los parámetros.
+    
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Potenciales interatómicos de aprendizaje automático: Descriptores}
+
+        \textbf{Expansión de la distribución radial/angular}:
+        $$
+        RDF_i(r) = \sum_{\mathbf{R}_j \in \gamma_i^{R_c}} \delta(r - R_{ij}) f_c(R_{ij}) w_{t_j},
+        $$
+        $$
+        ADF_i(\theta) = \sum_{\mathbf{R}_j, \mathbf{R}_k \in \gamma_i^{R_c}} \delta(\theta - theta_{ijk}) f_c(R_{ij}) f_c(R_{ik}) w_{t_j} w_{t_k},
+        $$
+
+        donde $w_{t_i}$ es el peso de la especie de átomos $t_i$.
+        
+        \pause
+
+        Un descriptor independiente del tamaño del problema se obtiene expandiendo
+        ambas cantidades en una base ortonormal (usualmente, polinomios de 
+        Chebyshev) hasta un orden $N$.
+
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Potenciales interatómicos de aprendizaje automático: Descriptores}
+
+        \textbf{Superposición suave de las posiciones atómicas}: La densidad
+        de vecinos viene dada por
+        $$
+        \rho_{SOAP}(\mathbf{R}) = \sum_{i=1}^{N_{env}} exp(-\alpha |\mathbf{R} - \mathbf{R_i}|^2)
+        $$
+
+        \pause
+
+        $\rho_{SOAP}$ no es invariante ante rotaciones, entonces se define el 
+        kernel SOAP
+        $$
+        k(\rho_{SOAP}, \rho_{SOAP}') = \int d\hat{R} \left|\int \rho_{SOAP}(\mathbf{r}) \rho_{SOAP}'(\mathbf{\hat{R}r})\right|^{\xi}
+        $$
+        normalizado por el factor $\frac{1}{\sqrt{k(\rho_{SOAP}, \rho_{SOAP}) k(\rho_{SOAP}', \rho_{SOAP}')}}$
+
+    \end{frame}
+
+    \subsection{Distintos potenciales de apendizaje automático}
+
+    \begin{frame}
+        \frametitle{Potenciales interatómicos de aprendizaje automático}
         NN Behler
         GAP
     \end{frame}
@@ -956,17 +1033,9 @@ su aplicación a baterias de litio}
         
         \textbf{Simulaciones de dinámica molecular}
         
-        \begin{columns}
-            \column{0.55\textwidth}
-            \begin{center}
-                \includegraphics[width=\columnwidth]{LiSi-potencial_vs_Li.png}
-            \end{center}
-
-            \column{0.45\textwidth}
-            \begin{itemize}
-                \item  
-            \end{itemize}
-        \end{columns}
+        \begin{center}
+            \includegraphics[width=0.6\textwidth]{LiSi-potencial_vs_Li.png}
+        \end{center}
             
     \end{frame}
     
