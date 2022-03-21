@@ -438,7 +438,7 @@ su aplicación a baterias de litio}
         RDF_i(r) = \sum_{\mathbf{R}_j \in \gamma_i^{R_c}} \delta(r - R_{ij}) f_c(R_{ij}) w_{t_j},
         $$
         $$
-        ADF_i(\theta) = \sum_{\mathbf{R}_j, \mathbf{R}_k \in \gamma_i^{R_c}} \delta(\theta - theta_{ijk}) f_c(R_{ij}) f_c(R_{ik}) w_{t_j} w_{t_k},
+        ADF_i(\theta) = \sum_{\mathbf{R}_j, \mathbf{R}_k \in \gamma_i^{R_c}} \delta(\theta - \theta_{ijk}) f_c(R_{ij}) f_c(R_{ik}) w_{t_j} w_{t_k},
         $$
 
         donde $w_{t_i}$ es el peso de la especie de átomos $t_i$.
@@ -475,8 +475,68 @@ su aplicación a baterias de litio}
 
     \begin{frame}
         \frametitle{Potenciales interatómicos de aprendizaje automático}
-        NN Behler
-        GAP
+
+        \begin{columns}
+            \column{0.3\textwidth}
+            \textbf{Redes neuronales (NN)}
+            \begin{itemize}
+                \item Red neuronal feed-forward.
+                \item Flexibilidad funcional para representar funciones
+                    arbitrarias.
+            \end{itemize}
+
+            \begin{center}
+                \includegraphics[width=\columnwidth]{MLP-NN.png}
+            \end{center}
+
+            \pause
+        
+            \column{0.7\textwidth}
+            \begin{center}
+                \includegraphics[width=0.4\columnwidth]{MLP-NN-node.png}
+            \end{center}
+            $$
+            E = f\left(
+                b_1^3 + \sum_{k=1}^3 a_{k1}^{23} \cdot f\left(
+                    b_k^2 + \sum_{j=1}^3 a_{jk}^{12} \cdot f\left(
+                        b_j^1 + \sum_{i=1}^2 G_i \cdot a_{ij}^{01}
+                    \right)
+                \right)
+            \right)
+            $$
+
+        \end{columns}
+
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Potenciales interatómicos de aprendizaje automático}
+
+        \begin{columns}
+            \column{0.3\textwidth}
+            \textbf{Redes neuronales (NN)}
+            \begin{itemize}
+                \item Red neuronal feed-forward.
+                \item Flexibilidad funcional para representar funciones
+                    arbitrarias.
+            \end{itemize}
+
+            \begin{center}
+                \includegraphics[width=\columnwidth]{MLP-NN.png}
+            \end{center}
+        
+            \column{0.7\textwidth}
+            Los parámetros de peso se determinan usando las energías y las fuerzas
+            de cálculos previos de la estructura electrónica en un proceso 
+            iterativo de optimización por el gradiente.
+
+            \
+
+            Una vez obtenida toda la información de la base de datos la misma es
+            evaluada durante la simulación directamente.
+
+        \end{columns}
+
     \end{frame}
 
     %%%% APLICACIONES %%%%
