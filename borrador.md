@@ -35,11 +35,3 @@ simulaciones en ordenes de magnitud preservando la precisión.
 **Chen2020**: Las técnicas de ML se están utilizando para ayudar a encontrar 
 correlaciones entre materiales, entender la química y la física de estos y 
 acelerar su descubrimiento.
-
-## Potenciales de ML
-
-**Behler2016**:
-+ _Potenciales de aproximación gaussiana y métodos kernel_: Combina algún
-descriptor con un kernel que relaciona la estructura con la energía. Es un 
-suma pesada sobre las energías conocidas de los entornos del conjunto de 
-entrenamiento. Combinación lineal de funciones que dependen del descriptor.

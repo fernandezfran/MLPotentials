@@ -538,6 +538,40 @@ su aplicación a baterias de litio}
         \end{columns}
 
     \end{frame}
+    
+    \begin{frame}
+        \frametitle{Potenciales interatómicos de aprendizaje automático}
+        
+        \textbf{Potenciales de aproximación gaussiana (GAP)}: Son obtenidos 
+        combinando un descriptor adecuado y un kernel para obtener una conexión 
+        entre la estructura y la energía:
+
+        \begin{columns}
+            \column{0.5\textwidth}
+            $$
+            E_i(\mathbf{q}_i) = \sum_{j=1}^{N_{basis}} \alpha_j \chi_j(\mathbf{q}_j).
+            $$
+
+            \column{0.5\textwidth}
+            $$
+            E_i = \sum_{j=1}^{N_{train}} \alpha_j K(\mathbf{q}, \mathbf{q}_j).
+            $$
+        \end{columns}
+
+        \ \pause
+
+        La energía atómica,
+        $$
+        E_i  = \sum_{n=1}^{N_{ref}} \alpha_n e^{-\frac{1}{2}\cdot\sum_{l=1}^L [(\mathbf{q}_l - \mathbf{q}_{n,l}) / \theta_l]^2},
+        $$
+
+        \ \pause
+
+        es una suma pesada sobre las energías de los entornos atómicos conocidos
+        en los datos de referencia, que tienen que estar disponibles a la hora
+        de utilizar este potencial.
+
+    \end{frame}
 
     %%%% APLICACIONES %%%%
     \section{Aplicaciones en baterias de litio}
