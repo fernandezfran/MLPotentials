@@ -433,6 +433,26 @@ su aplicación a baterias de litio}
     \begin{frame}
         \frametitle{Potenciales interatómicos de aprendizaje automático: Descriptores}
 
+        \textbf{Superposición suave de las posiciones atómicas}: La densidad
+        de vecinos viene dada por
+        $$
+        \rho_{SOAP}(\mathbf{R}) = \sum_{i=1}^{N_{env}} exp(-\alpha |\mathbf{R} - \mathbf{R_i}|^2)
+        $$
+
+        \pause
+
+        $\rho_{SOAP}$ no es invariante ante rotaciones, entonces se define el 
+        kernel SOAP
+        $$
+        k(\rho_{SOAP}, \rho_{SOAP}') = \int d\hat{R} \left|\int \rho_{SOAP}(\mathbf{r}) \rho_{SOAP}'(\mathbf{\hat{R}r})\right|^{\xi}
+        $$
+        normalizado por el factor $\frac{1}{\sqrt{k(\rho_{SOAP}, \rho_{SOAP}) k(\rho_{SOAP}', \rho_{SOAP}')}}$
+
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Potenciales interatómicos de aprendizaje automático: Descriptores}
+
         \textbf{Expansión de la distribución radial/angular}:
         $$
         RDF_i(r) = \sum_{\mathbf{R}_j \in \gamma_i^{R_c}} \delta(r - R_{ij}) f_c(R_{ij}) w_{t_j},
@@ -451,26 +471,6 @@ su aplicación a baterias de litio}
 
     \end{frame}
     
-    \begin{frame}
-        \frametitle{Potenciales interatómicos de aprendizaje automático: Descriptores}
-
-        \textbf{Superposición suave de las posiciones atómicas}: La densidad
-        de vecinos viene dada por
-        $$
-        \rho_{SOAP}(\mathbf{R}) = \sum_{i=1}^{N_{env}} exp(-\alpha |\mathbf{R} - \mathbf{R_i}|^2)
-        $$
-
-        \pause
-
-        $\rho_{SOAP}$ no es invariante ante rotaciones, entonces se define el 
-        kernel SOAP
-        $$
-        k(\rho_{SOAP}, \rho_{SOAP}') = \int d\hat{R} \left|\int \rho_{SOAP}(\mathbf{r}) \rho_{SOAP}'(\mathbf{\hat{R}r})\right|^{\xi}
-        $$
-        normalizado por el factor $\frac{1}{\sqrt{k(\rho_{SOAP}, \rho_{SOAP}) k(\rho_{SOAP}', \rho_{SOAP}')}}$
-
-    \end{frame}
-
     \subsection{Distintos potenciales de apendizaje automático}
 
     \begin{frame}
@@ -577,6 +577,18 @@ su aplicación a baterias de litio}
     \section{Aplicaciones en baterias de litio}
 
     \subsection{Li$_3$PO$_4$}
+    \subsection{LiC}
+    \begin{frame}
+        \begin{center}
+            {\huge Li$_3$PO$_4$}
+        \end{center}
+        \tiny{
+            Li, W., Ando, Y., Minamitani, E., \& Watanabe, S. (2017). 
+            Study of Li atom diffusion in amorphous Li3PO4 with neural 
+            network potential. \textit{The Journal of chemical physics}, 
+            147(21), 214106.
+        }
+    \end{frame}
 
     \begin{frame}
         \frametitle{Aplicaciones en baterias de litio: Li$_3$PO$_4$}
@@ -799,6 +811,17 @@ su aplicación a baterias de litio}
     \end{frame}
 
     \subsection{LiC}
+    \begin{frame}
+        \begin{center}
+            {\huge LiC}
+        \end{center}
+        \tiny{
+            Fujikake, S., Deringer, V. L., Lee, T. H., Krynski, M., 
+            Elliott, S. R., \& Csányi, G. (2018). Gaussian approximation 
+            potential modeling of lithium intercalation in carbon 
+            nanostructures. \textit{The Journal of chemical physics}, 148(24), 241714.
+        }
+    \end{frame}
     
     \begin{frame}
         \frametitle{Aplicaciones en baterias de litio: LiC}
@@ -985,6 +1008,17 @@ su aplicación a baterias de litio}
     \end{frame}
 
     \subsection{Li$_x$Si}
+    \begin{frame}
+        \begin{center}
+            {\huge Li$_x$Si}
+        \end{center}
+        \tiny{
+            Artrith, N., Urban, A., \& Ceder, G. (2018). Constructing 
+            first-principles phase diagrams of amorphous Li x Si using 
+            machine-learning-assisted sampling with an evolutionary algorithm. 
+            \textit{The Journal of chemical physics}, 148(24), 241711.
+        }
+    \end{frame}
     
     \begin{frame}
         \frametitle{Aplicaciones en baterias de litio: Li$_x$Si}
@@ -1183,6 +1217,57 @@ su aplicación a baterias de litio}
 
     \begin{frame}
         \frametitle{Bibliografía consultada}
+
+        \tiny{
+            Deringer, V. L. (2020). Modelling and understanding battery 
+                materials with machine-learning-driven atomistic simulations.
+                \textit{Journal of Physics: Energy}, 2(4), 041003.
+            
+            Deringer, V. L., Caro, M. A., \& Csányi, G. (2019). Machine 
+                learning interatomic potentials as emerging tools for materials 
+                science. \textit{Advanced Materials}, 31(46), 1902765.
+
+            Mishin, Y. (2021). Machine-learning interatomic potentials for 
+                materials science. \textit{Acta Materialia}, 214, 116980.
+
+            Behler, J. (2017). First principles neural network potentials 
+                for reactive simulations of large molecular and condensed systems. 
+                \textit{Angewandte Chemie International Edition}, 56(42), 12828-12840.
+
+            Behler, J. (2016). Perspective: Machine learning potentials 
+                for atomistic simulations. \textit{The Journal of chemical 
+                physics}, 145(17), 170901.
+
+            Mueller, T., Hernandez, A., \& Wang, C. (2020). Machine learning 
+                for interatomic potential models. \textit{The Journal of chemical 
+                physics}, 152(5), 050902.
+
+            Hong, Y., Hou, B., Jiang, H., \& Zhang, J. (2020). Machine 
+                learning and artificial neural network accelerated computational 
+                discoveries in materials science. \textit{Wiley Interdisciplinary 
+                Reviews: Computational Molecular Science}, 10(3), e1450.
+
+            Botu, V., Batra, R., Chapman, J., \& Ramprasad, R. (2017). 
+                Machine learning force fields: construction, validation, and 
+                outlook. \textit{The Journal of Physical Chemistry C}, 121(1), 
+                511-522.
+
+            Li, W., Ando, Y., Minamitani, E., \& Watanabe, S. (2017). 
+                Study of Li atom diffusion in amorphous Li3PO4 with neural 
+                network potential. \textit{The Journal of chemical physics}, 
+                147(21), 214106.
+
+            Fujikake, S., Deringer, V. L., Lee, T. H., Krynski, M., 
+                Elliott, S. R., \& Csányi, G. (2018). Gaussian approximation 
+                potential modeling of lithium intercalation in carbon 
+                nanostructures. \textit{The Journal of chemical physics}, 148(24), 241714.
+
+            Artrith, N., Urban, A., \& Ceder, G. (2018). Constructing 
+                first-principles phase diagrams of amorphous Li x Si using 
+                machine-learning-assisted sampling with an evolutionary algorithm. 
+                \textit{The Journal of chemical physics}, 148(24), 241711.
+        }
+
     \end{frame}
     
     %%%% PREGUNTAS %%%%
