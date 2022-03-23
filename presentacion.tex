@@ -43,7 +43,7 @@
 
 %%%%% caratula
 \title[Potenciales de ML]{Potenciales interatómicos de aprendizaje automático y 
-su aplicación a baterias de litio}
+su aplicación a baterías de litio}
 \subtitle{Seminario de doctorado}
 \author[Francisco FERNANDEZ]{Francisco FERNANDEZ}
 \logo{
@@ -93,7 +93,7 @@ su aplicación a baterias de litio}
         Para complementar la gran cantidad de \textbf{herramientas experimentales}
         (difracción de rayos x o neutrones, microscopía electrónica, resonancia
         magnética nuclear, espectroscopía de rayos x, etc) que existen para 
-        estudiar materiales relevantes para las distintas partes de las baterias 
+        estudiar materiales relevantes para las distintas partes de las baterías 
         se han venido realizando \textbf{simulaciones computacionales}, 
         principalmente:
         \begin{enumerate}
@@ -312,7 +312,7 @@ su aplicación a baterias de litio}
 
         \textbf{2. Preparación de los datos}: Las posiciones atómicas necesitan 
         ser transformadas a \textbf{descriptores} adecuados para los 
-        \textbf{métodos de ML} que deben cumplir con distintos \textit{constains} 
+        \textbf{métodos de ML} que deben cumplir con distintos \textit{constrains} 
         físicos:
         \begin{enumerate}
             \item Las contribuciones dominantes a la energía son de los átomos 
@@ -336,7 +336,7 @@ su aplicación a baterias de litio}
 
             \column{0.65\textwidth}
             \textbf{3. Construcción de la PES}: Elección del método de ML y 
-            proceso de ajuste de los parámetros para que minimizen, usualmente, 
+            proceso de ajuste de los parámetros para que minimicen, usualmente, 
             el RMSE de las energías y de las fuerzas en el conjunto de 
             entrenamiento.
 
@@ -463,7 +463,7 @@ su aplicación a baterias de litio}
 
         donde $w_{t_i}$ es el peso de la especie de átomos $t_i$.
         
-        \pause
+        \ \pause
 
         Un descriptor independiente del tamaño del problema se obtiene expandiendo
         ambas cantidades en una base ortonormal (usualmente, polinomios de 
@@ -471,7 +471,7 @@ su aplicación a baterias de litio}
 
     \end{frame}
     
-    \subsection{Distintos potenciales de apendizaje automático}
+    \subsection{Distintos potenciales de aprendizaje automático}
 
     \begin{frame}
         \frametitle{Potenciales interatómicos de aprendizaje automático}
@@ -574,10 +574,9 @@ su aplicación a baterias de litio}
     \end{frame}
 
     %%%% APLICACIONES %%%%
-    \section{Aplicaciones en baterias de litio}
+    \section{Aplicaciones en baterías de litio}
 
     \subsection{Li$_3$PO$_4$}
-    \subsection{LiC}
     \begin{frame}
         \begin{center}
             {\huge Li$_3$PO$_4$}
@@ -591,7 +590,7 @@ su aplicación a baterias de litio}
     \end{frame}
 
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: Li$_3$PO$_4$}
+        \frametitle{Aplicaciones en baterías de litio: Li$_3$PO$_4$}
             
         El \textbf{fosfato de litio} (a-Li$_3$PO$_4$) es un electrolito sólido 
         clásico, que puede ser fabricado en películas delgadas.
@@ -607,7 +606,7 @@ su aplicación a baterias de litio}
             \column{0.7\textwidth}
             \textbf{Base de datos}:
             \begin{itemize}
-                \item Las energías de refencia fueron calculadas con DFT (VASP).
+                \item Las energías de referencia fueron calculadas con DFT (VASP).
                 \item Celdas de 15-16, 29-32, 61-64 átomos.
                 \item Convergencia de la energía en 1 meV/átomo.
 
@@ -621,7 +620,7 @@ su aplicación a baterias de litio}
                         \item Estructuras con defectos, extrayendo átomos de Li o
                             una unidad Li$_2$O de manera aleatoria, de los 
                             \textit{frames} anteriores.
-                        \item Imagenes intermedias de NEB.
+                        \item Imágenes intermedias de NEB.
                     \end{enumerate}
                 \item De las 38592 estructuras, se utilizaron 30874 
                     ($\approx$80\%) en el entrenamiento y 7718 ($\approx$20\%) 
@@ -632,7 +631,7 @@ su aplicación a baterias de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: Li$_3$PO$_4$}
+        \frametitle{Aplicaciones en baterías de litio: Li$_3$PO$_4$}
             
         \textbf{Preparación de los datos y entrenamiento}:
         \begin{itemize}
@@ -652,7 +651,7 @@ su aplicación a baterias de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: Li$_3$PO$_4$}
+        \frametitle{Aplicaciones en baterías de litio: Li$_3$PO$_4$}
 
         \begin{center}
             \includegraphics[width=0.6\textwidth]{Li3PO4-training_testing.png}
@@ -664,7 +663,7 @@ su aplicación a baterias de litio}
     \end{frame}
 
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: Li$_3$PO$_4$}
+        \frametitle{Aplicaciones en baterías de litio: Li$_3$PO$_4$}
          
         \textbf{Uso en simulaciones}
 
@@ -694,7 +693,7 @@ su aplicación a baterias de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: Li$_3$PO$_4$}
+        \frametitle{Aplicaciones en baterías de litio: Li$_3$PO$_4$}
             
         \textbf{Uso en simulaciones}
 
@@ -719,7 +718,7 @@ su aplicación a baterias de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: Li$_3$PO$_4$}
+        \frametitle{Aplicaciones en baterías de litio: Li$_3$PO$_4$}
             
         \textbf{Uso en simulaciones}
 
@@ -755,7 +754,7 @@ su aplicación a baterias de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: Li$_3$PO$_4$}
+        \frametitle{Aplicaciones en baterías de litio: Li$_3$PO$_4$}
             
         \textbf{Uso en simulaciones}
 
@@ -782,7 +781,7 @@ su aplicación a baterias de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: Li$_3$PO$_4$}
+        \frametitle{Aplicaciones en baterías de litio: Li$_3$PO$_4$}
             
         \textbf{Uso en simulaciones}
 
@@ -801,7 +800,7 @@ su aplicación a baterias de litio}
             Energía de activación obtenida: 0.55 eV
 
             \column{0.4\textwidth}
-            Energías de activación: 0.58 eV (ion-exchage), 0.57 eV (mask) y
+            Energías de activación: 0.58 eV (ion-exchange), 0.57 eV (mask) y
             0.55 eV (impedance spectroscopy).
             \begin{center}
                 \includegraphics[width=\columnwidth]{Li3PO4-MD-arrhenius.png}
@@ -824,9 +823,9 @@ su aplicación a baterias de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: LiC}
+        \frametitle{Aplicaciones en baterías de litio: LiC}
             
-        Los ánodos de las baterias de litio suelen ser de \textbf{grafito} u otras
+        Los ánodos de las baterías de litio suelen ser de \textbf{grafito} u otras
         nanoestructuras de carbono.
         
         \begin{columns}
@@ -844,7 +843,7 @@ su aplicación a baterias de litio}
             
             \ \pause
 
-            Fitean las diferencias en energía que se dan al incertar Li,
+            Fitean las diferencias en energía que se dan al insertar Li,
             $$
             \Delta E_{DFT} = E_{DFT}(Li_xC) - E_{DFT}(C_x) - E_{DFT}(Li),
             $$
@@ -855,9 +854,9 @@ su aplicación a baterias de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: LiC}
+        \frametitle{Aplicaciones en baterías de litio: LiC}
             
-        Los ánodos de las baterias de litio suelen ser de \textbf{grafito} u otras
+        Los ánodos de las baterías de litio suelen ser de \textbf{grafito} u otras
         nanoestructuras de carbono.
         
         \begin{columns}
@@ -881,7 +880,7 @@ su aplicación a baterias de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: LiC}
+        \frametitle{Aplicaciones en baterías de litio: LiC}
         
         \begin{columns}
             \column{0.6\textwidth}
@@ -904,7 +903,7 @@ su aplicación a baterias de litio}
     \end{frame}
 
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: LiC}
+        \frametitle{Aplicaciones en baterías de litio: LiC}
         
         \begin{columns}
             \column{0.6\textwidth}
@@ -928,7 +927,7 @@ su aplicación a baterias de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: LiC}
+        \frametitle{Aplicaciones en baterías de litio: LiC}
         
         \begin{columns}
             \column{0.5\textwidth}
@@ -951,7 +950,7 @@ su aplicación a baterias de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: LiC}
+        \frametitle{Aplicaciones en baterías de litio: LiC}
 
         \textbf{Absorsión de un átomo de Li y difusión entre dos mínimos de 
         potencial}
@@ -962,7 +961,7 @@ su aplicación a baterias de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: LiC}
+        \frametitle{Aplicaciones en baterías de litio: LiC}
 
         \textbf{Simulaciones de dinámica molecular}
 
@@ -989,7 +988,7 @@ su aplicación a baterias de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: LiC}
+        \frametitle{Aplicaciones en baterías de litio: LiC}
 
         \textbf{Simulaciones de dinámica molecular}
 
@@ -1002,7 +1001,7 @@ su aplicación a baterias de litio}
             \end{center}
             
             \column{0.65\textwidth}
-            \textit{Velocity sensities of states} usando la función de 
+            \textit{Vibrational density of states} usando la función de 
             autocorrelación de las velocidades.
         \end{columns}
     \end{frame}
@@ -1021,10 +1020,10 @@ su aplicación a baterias de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: Li$_x$Si}
+        \frametitle{Aplicaciones en baterías de litio: Li$_x$Si}
         
         El \textbf{silicio} amorfo es un potencial material de ánodo de alta
-        capacidad para laas baterias de litio.
+        capacidad para laas baterías de litio.
         
         \begin{columns}
             \column{0.65\textwidth}
@@ -1047,10 +1046,10 @@ su aplicación a baterias de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: Li$_x$Si}
+        \frametitle{Aplicaciones en baterías de litio: Li$_x$Si}
         
         El \textbf{silicio} amorfo es un potencial material de ánodo de alta
-        capacidad para laas baterias de litio.
+        capacidad para laas baterías de litio.
         
         \begin{columns}
             \column{0.65\textwidth}
@@ -1073,10 +1072,10 @@ su aplicación a baterias de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: Li$_x$Si}
+        \frametitle{Aplicaciones en baterías de litio: Li$_x$Si}
         
         El \textbf{silicio} amorfo es un potencial material de ánodo de alta
-        capacidad para laas baterias de litio.
+        capacidad para laas baterías de litio.
         
         \begin{columns}
             \column{0.65\textwidth}
@@ -1093,10 +1092,10 @@ su aplicación a baterias de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: Li$_x$Si}
+        \frametitle{Aplicaciones en baterías de litio: Li$_x$Si}
         
         El \textbf{silicio} amorfo es un potencial material de ánodo de alta
-        capacidad para laas baterias de litio.
+        capacidad para laas baterías de litio.
         
         \begin{columns}
             \column{0.65\textwidth}
@@ -1113,7 +1112,7 @@ su aplicación a baterias de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: Li$_x$Si}
+        \frametitle{Aplicaciones en baterías de litio: Li$_x$Si}
         
         \textbf{Simulaciones de dinámica molecular}
         
@@ -1138,7 +1137,7 @@ su aplicación a baterias de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: Li$_x$Si}
+        \frametitle{Aplicaciones en baterías de litio: Li$_x$Si}
         
         \textbf{Simulaciones de dinámica molecular}
         
@@ -1157,7 +1156,7 @@ su aplicación a baterias de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterias de litio: Li$_x$Si}
+        \frametitle{Aplicaciones en baterías de litio: Li$_x$Si}
         
         \textbf{Simulaciones de dinámica molecular}
         
@@ -1179,7 +1178,7 @@ su aplicación a baterias de litio}
         \ \pause
 
         Los potenciales de aprendizaje automático están emergiendo como una nueva
-        herramienta complementaria para el modelado de materiales y rapidamente 
+        herramienta complementaria para el modelado de materiales y rápidamente 
         se están convirtiendo lo suficientemente flexibles para ser aplicados 
         en problemas reales de las ciencias de los materiales.
 
@@ -1205,7 +1204,7 @@ su aplicación a baterias de litio}
             \begin{itemize}
                 \item Se necesitan muchos datos de entrenamiento y es costoso 
                     generarlos.
-                \item Son uno o dos ordenes de magnitud más lentos que los 
+                \item Son uno o dos órdenes de magnitud más lentos que los 
                     potenciales empíricos.
                 \item Transferibilidad limitada. 
             \end{itemize}

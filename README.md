@@ -1,4 +1,4 @@
-# Potenciales interatómicos de aprendizaje automático y su aplicación a baterias de litio
+# Potenciales interatómicos de aprendizaje automático y su aplicación a baterías de litio
 
 > Seminario del doctorado en Física en [FAMAF](https://www.famaf.unc.edu.ar/investigaci%C3%B3n/%C3%A1reas-de-investigaci%C3%B3n/f%C3%ADsica-ofi/seminarios-de-f%C3%ADsica/).
 
@@ -8,12 +8,12 @@ aproximaciones clásicas, las primeras de ellas de gran precisión pero limitada
 sistemas pequeños mientras que la segunda permite simulaciones en escalas más 
 grandes pero su precisión depende de la forma funcional que se elija. Debido a la
 complejidad en aumento de los sistemas electroquímicos de interés en el área de 
-las baterias de litio, es necesario que las simulaciones puedan realizarse a 
+las baterías de litio, es necesario que las simulaciones puedan realizarse a 
 escalas mayores sin perder precisión, los potenciales interatómicos de aprendizaje 
 automático ofrecen representar la superficie energía-potencial mediante un
 entrenamiento con datos de la estructura electrónica que permite llevar esto a 
 cabo. En este seminario se introducen dichos potenciales y se presentan 
-aplicaciones de los mismos en distintas componentes de las baterias de litio. 
+aplicaciones de los mismos en distintos componentes de las baterías de litio. 
 
 ----------------------------------------------------------------------------------
 ### Referencias
