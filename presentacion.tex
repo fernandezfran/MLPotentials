@@ -104,7 +104,7 @@ su aplicación a baterías de litio}
         \ \pause
 
         En este seminario se presenta un modelado emergente y complementario, los
-        \textbf{potenciales interatómicos de aprendizaje automático} creados a 
+        \textbf{potenciales interatómicos de aprendizaje automático} entrenados a 
         partir de datos de referencia provenientes de mecánica cuántica que buscan
         tener eficiencia y precisión cercanas a las de los FF y de DFT, 
         respectivamente.
@@ -444,7 +444,7 @@ su aplicación a baterías de litio}
         $\rho_{SOAP}$ no es invariante ante rotaciones, entonces se define el 
         kernel SOAP
         $$
-        k(\rho_{SOAP}, \rho_{SOAP}') = \int d\hat{R} \left|\int \rho_{SOAP}(\mathbf{r}) \rho_{SOAP}'(\mathbf{\hat{R}r})\right|^{\xi}
+        k(\rho_{SOAP}, \rho_{SOAP}') = \int d\hat{R} \left|\int \rho_{SOAP}(\mathbf{r}) \rho_{SOAP}'(\mathbf{\hat{R}r}) dr \right|^{\xi}
         $$
         normalizado por el factor $\frac{1}{\sqrt{k(\rho_{SOAP}, \rho_{SOAP}) k(\rho_{SOAP}', \rho_{SOAP}')}}$
 
@@ -638,15 +638,23 @@ su aplicación a baterías de litio}
             \item Se usaron los dos tipos de descriptores ASCF, radial y angular, 
                 con un radio de corte de 7\AA.
             \item Redes neuronales para cada especie de átomo con 2 capas ocultas
-                y 5 nodos en cada una de ellas. Tangente hiperbólica como función
+                y 15 nodos en cada una de ellas. Tangente hiperbólica como función
                 de activación. Función de activación lineal en el nodo de salida.
         \end{itemize}
 
         \pause
 
-        \begin{center}
-            \includegraphics[width=0.6\textwidth]{Li3PO4-rmse.png}
-        \end{center}
+        \begin{columns}
+            \column{0.2\textwidth}
+            \begin{center}
+                \includegraphics[width=\columnwidth]{Li3PO4-estructura.png}
+            \end{center}
+
+            \column{0.8\textwidth}
+            \begin{center}
+                \includegraphics[width=0.7\columnwidth]{Li3PO4-rmse.png}
+            \end{center}
+        \end{columns}
 
     \end{frame}
     
@@ -886,8 +894,8 @@ su aplicación a baterías de litio}
             \column{0.6\textwidth}
             El método directo no da buenos resultados para la interacción Li-Li.
 
-            Esto se debe a que el cambio de energía al insertar un átomo de Li
-            es $\approx$1 eV, mientras que la interacción Li-Li es $\approx$0.1 eV.
+            % Esto se debe a que el cambio de energía al insertar un átomo de Li
+            % es $\approx$1 eV, mientras que la interacción Li-Li es $\approx$0.1 eV.
 
             \ \pause 
 
@@ -906,6 +914,11 @@ su aplicación a baterías de litio}
         \frametitle{Aplicaciones en baterías de litio: LiC}
         
         \begin{columns}
+            \column{0.4\textwidth}
+            \begin{center}
+                \includegraphics[width=0.7\columnwidth]{LiC-fuerza_1_atomo_de_Li.png}
+            \end{center}
+
             \column{0.6\textwidth}
             \textbf{Base de datos}:
             \begin{itemize}
@@ -917,11 +930,6 @@ su aplicación a baterías de litio}
                     \end{enumerate}
                     hasta un 10\% de concentración.
             \end{itemize}
-
-            \column{0.4\textwidth}
-            \begin{center}
-                \includegraphics[width=0.7\columnwidth]{LiC-fuerza_1_atomo_de_Li.png}
-            \end{center}
         \end{columns}
 
     \end{frame}
@@ -949,16 +957,16 @@ su aplicación a baterías de litio}
         \end{columns}
     \end{frame}
     
-    \begin{frame}
-        \frametitle{Aplicaciones en baterías de litio: LiC}
-
-        \textbf{Absorsión de un átomo de Li y difusión entre dos mínimos de 
-        potencial}
-        
-        \begin{center}
-            \includegraphics[width=0.3\textwidth]{LiC-sites.png}
-        \end{center}
-    \end{frame}
+    %\begin{frame}
+    %    \frametitle{Aplicaciones en baterías de litio: LiC}
+    %
+    %    \textbf{Absorsión de un átomo de Li y difusión entre dos mínimos de 
+    %    potencial}
+    %    
+    %    \begin{center}
+    %        \includegraphics[width=0.3\textwidth]{LiC-sites.png}
+    %    \end{center}
+    %\end{frame}
     
     \begin{frame}
         \frametitle{Aplicaciones en baterías de litio: LiC}
@@ -972,8 +980,8 @@ su aplicación a baterías de litio}
             \begin{itemize}
                 \item Temperatura: 1000 K
                 \item Paso temporal: 1 fs
-                \item Pasos de equilibración: 25 ps 
-                \item Pasos de sampleo: 50 ps
+                \item Tiempo de equilibración: 25 ps 
+                \item Tiempo de sampleo: 50 ps
             \end{itemize}
 
             \ \pause
@@ -1023,7 +1031,7 @@ su aplicación a baterías de litio}
         \frametitle{Aplicaciones en baterías de litio: Li$_x$Si}
         
         El \textbf{silicio} amorfo es un potencial material de ánodo de alta
-        capacidad para laas baterías de litio.
+        capacidad para las baterías de litio.
         
         \begin{columns}
             \column{0.65\textwidth}
@@ -1049,7 +1057,7 @@ su aplicación a baterías de litio}
         \frametitle{Aplicaciones en baterías de litio: Li$_x$Si}
         
         El \textbf{silicio} amorfo es un potencial material de ánodo de alta
-        capacidad para laas baterías de litio.
+        capacidad para las baterías de litio.
         
         \begin{columns}
             \column{0.65\textwidth}
@@ -1075,7 +1083,7 @@ su aplicación a baterías de litio}
         \frametitle{Aplicaciones en baterías de litio: Li$_x$Si}
         
         El \textbf{silicio} amorfo es un potencial material de ánodo de alta
-        capacidad para laas baterías de litio.
+        capacidad para las baterías de litio.
         
         \begin{columns}
             \column{0.65\textwidth}
@@ -1084,9 +1092,8 @@ su aplicación a baterías de litio}
             \end{center}
 
             \column{0.35\textwidth}
-            Tamaño de población de 32 y razón de mutación del 10\%. Al menos 30 
-            estructuras son optimizadas por DFT para obtener la estructura inicial
-            del siguiente paso.
+            Al menos 30 estructuras son optimizadas por DFT para obtener la 
+            estructura inicial del siguiente paso.
         \end{columns}
             
     \end{frame}
@@ -1095,7 +1102,7 @@ su aplicación a baterías de litio}
         \frametitle{Aplicaciones en baterías de litio: Li$_x$Si}
         
         El \textbf{silicio} amorfo es un potencial material de ánodo de alta
-        capacidad para laas baterías de litio.
+        capacidad para las baterías de litio.
         
         \begin{columns}
             \column{0.65\textwidth}
