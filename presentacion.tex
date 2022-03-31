@@ -49,7 +49,7 @@ su aplicación a baterías de litio}
 \logo{
     \includegraphics[width=1.3cm,keepaspectratio]{logo_famaf.png}
 }
-\institute[FaMAF (UNC)]{Facultad de Matemática, Astronomía, Física y Computación 
+\institute[FaMAF - UNC]{Facultad de Matemática, Astronomía, Física y Computación 
 (Universidad Nacional de Córdoba) \\ \scalebox{1.5}{\insertlogo}}
 \date[\today]{\today}
 
@@ -75,7 +75,7 @@ su aplicación a baterías de litio}
     \section{Introducción}
     
     \begin{frame}
-        \frametitle{Introducción}
+        \frametitle{Introducción: Funcionamiento de una batería}
 
         \begin{columns}
             \column{0.5\textwidth}
@@ -97,7 +97,7 @@ su aplicación a baterías de litio}
         se han venido realizando \textbf{simulaciones computacionales}, 
         principalmente:
         \begin{enumerate}
-            \item Teoría del funcional de la densidad (DFT),
+            \item Teoría del funcional de la densidad electrónica (DFT),
             \item campos de fuerzas (FF) en MD, MC, kMC, etc.
         \end{enumerate}
 
@@ -118,7 +118,7 @@ su aplicación a baterías de litio}
         son considerados como partículas clásicas a la hora de determinar la 
         función de onda electrónica, la energía de un estado electrónico a partir 
         de las posiciones de los núcleos se conoce como la \textbf{superficie 
-        energía-potencial (PES)} y está completamente definido por su Hamiltoniano
+        energía-potencial (PES)} y está completamente definida por su Hamiltoniano
         electrónico.
 
         \pause
@@ -129,7 +129,7 @@ su aplicación a baterías de litio}
 
 	\end{frame}
 
-    \subsection{Teoría del Funcional de la Densidad (DFT)}
+    \subsection{Teoría del Funcional de la Densidad electrónica (DFT)}
 
 	\begin{frame}
         \frametitle{Introducción: Teoría del Funcional de la Densiadad (DFT)}
@@ -146,7 +146,8 @@ su aplicación a baterías de litio}
         \pause
 
         Para aproximar la solución a esta ecuación, uno de los métodos más 
-        utilizados es la \textbf{Teoría del Funcional de la Densidad (DFT)}.
+        utilizados es la \textbf{Teoría del Funcional de la Densidad electrónica 
+        (DFT)}.
 
         \pause
 
@@ -187,7 +188,9 @@ su aplicación a baterías de litio}
             \end{itemize}
             \column{0.5\textwidth}
             \begin{center}
-                \includegraphics[width=0.45\columnwidth]{intro-ff.png}
+                \includegraphics[width=0.4\columnwidth]{intro-ff.png}
+        
+                \tiny{Mishin (2021). \textit{Acta Materialia}}
             \end{center}
         \end{columns}
 
@@ -215,6 +218,9 @@ su aplicación a baterías de litio}
 
         \begin{center}
             \includegraphics[width=0.7\textwidth]{intro-definicion-ML.png}
+
+            \tiny{Hong \textit{et al.} (2020). \textit{Wiley Interdisciplinary
+            Reviews: Computational Molecular Science}}
         \end{center}
 
         \pause
@@ -286,6 +292,8 @@ su aplicación a baterías de litio}
 
         \begin{center}
             \includegraphics[width=0.65\textwidth]{intro-construccion.png}
+
+            \tiny{Deringer \textit{et al.} (2019). \textit{Advanced Materials}}
         \end{center}
 
 	\end{frame}
@@ -294,14 +302,17 @@ su aplicación a baterías de litio}
         \frametitle{Potenciales interatómicos de aprendizaje automático: Construcción}
         
         \begin{columns}
-            \column{0.5\textwidth}
+            \column{0.45\textwidth}
             \textbf{1. Cálculos de la estructura electrónica}: Las estructuras deben
             ser elegidas con cuidado para asegurarse que en la PES se encuentren 
             todas las propiedades de interés
 
-            \column{0.5\textwidth}
+            \column{0.55\textwidth}
             \begin{center}
-                \includegraphics[width=0.65\textwidth]{intro-dft_data.png}
+                \includegraphics[width=\columnwidth]{intro-dft_data.png}
+
+                \tiny{Botu \textit{et al.} (2016). \textit{The Jornal of Physical
+                Chemistry C}}
             \end{center}
         \end{columns}
 
@@ -332,6 +343,8 @@ su aplicación a baterías de litio}
             \column{0.35\textwidth}
             \begin{center}
                 \includegraphics[width=0.65\columnwidth]{intro-fitting.png}
+                
+                \tiny{Behler (2017). \textit{Angewandte Chemie International}}
             \end{center}
 
             \column{0.65\textwidth}
@@ -356,7 +369,7 @@ su aplicación a baterías de litio}
             \item Se debe ir chequeando si las estructuras de interés están dentro
                 del rango de los descriptores usados en el conjunto de 
                 entrenamiento
-            \item Identificar regiones de la PES insuficientemente sampleadas 
+            \item Identificar regiones de la PES insuficientemente muestreadas 
                 (por ejemplo, comparando resultados de entrenamientos distintos).
         \end{enumerate}
 
@@ -377,6 +390,8 @@ su aplicación a baterías de litio}
                 \includegraphics[width=0.3\columnwidth]{intro-ml.png}
             \end{center}
         \end{columns}
+
+        \tiny{Mishin (2021). \textit{Acta Materialia}}
 
 	\end{frame}
 
@@ -487,12 +502,16 @@ su aplicación a baterías de litio}
 
             \begin{center}
                 \includegraphics[width=\columnwidth]{MLP-NN.png}
+
+                \tiny{Behler (2016). \textit{The Journal of chemical physics}}
             \end{center}
 
             \pause
         
             \column{0.7\textwidth}
             \begin{center}
+                \tiny{Behler (2017). \textit{Angewandte Chemie International}}
+
                 \includegraphics[width=0.4\columnwidth]{MLP-NN-node.png}
             \end{center}
             $$
@@ -523,6 +542,8 @@ su aplicación a baterías de litio}
 
             \begin{center}
                 \includegraphics[width=\columnwidth]{MLP-NN.png}
+
+                \tiny{Behler (2016). \textit{The Journal of chemical physics}}
             \end{center}
         
             \column{0.7\textwidth}
@@ -663,6 +684,9 @@ su aplicación a baterías de litio}
 
         \begin{center}
             \includegraphics[width=0.6\textwidth]{Li3PO4-training_testing.png}
+
+            {\tiny Li \textit{et al.} (2017). \textit{The Journal of chemical
+            physics}}
         \end{center}
 
         RMSE de 5.0 meV/átomo y 5.6 meV/átomo para los conjuntos de entrenamiento
@@ -694,6 +718,9 @@ su aplicación a baterías de litio}
 
             \column{0.5\textwidth}
             \begin{center}
+                \tiny{Li \textit{et al.} (2017). \textit{The Journal of chemical
+                physics}}
+
                 \includegraphics[width=0.8\columnwidth]{Li3PO4-vacancias.png}
             \end{center}
         \end{columns}
@@ -712,6 +739,8 @@ su aplicación a baterías de litio}
             \begin{center}
                 \includegraphics[width=\columnwidth]{Li3PO4-neb.png}
             \end{center}
+            \tiny{Li \textit{et al.} (2017). \textit{The Journal of chemical
+            physics}}
 
             \column{0.7\textwidth}
             Se obtuvieron 46 caminos de migración para los átomos de Li mediante
@@ -755,8 +784,10 @@ su aplicación a baterías de litio}
             Energías de activación: 0.602 eV y 0.561 eV, para los NEBs resultantes 
             de NN y DFT.
             \begin{center}
-                \includegraphics[width=\columnwidth]{Li3PO4-kMC-arrhenius.png}
+                \includegraphics[width=0.9\columnwidth]{Li3PO4-kMC-arrhenius.png}
             \end{center}
+            \tiny{Li \textit{et al.} (2017). \textit{The Journal of chemical
+            physics}}
         \end{columns}
 
     \end{frame}
@@ -782,8 +813,10 @@ su aplicación a baterías de litio}
             Energías de activación: 0.59 eV para MD NN (0.602 eV y 0.561 eV en 
             kMC). 
             \begin{center}
-                \includegraphics[width=\columnwidth]{Li3PO4-kMC-arrhenius.png}
+                \includegraphics[width=0.9\columnwidth]{Li3PO4-kMC-arrhenius.png}
             \end{center}
+            \tiny{Li \textit{et al.} (2017). \textit{The Journal of chemical
+            physics}}
         \end{columns}
 
     \end{frame}
@@ -811,16 +844,18 @@ su aplicación a baterías de litio}
             Energías de activación: 0.58 eV (ion-exchange), 0.57 eV (mask) y
             0.55 eV (impedance spectroscopy).
             \begin{center}
-                \includegraphics[width=\columnwidth]{Li3PO4-MD-arrhenius.png}
+                \includegraphics[width=0.9\columnwidth]{Li3PO4-MD-arrhenius.png}
             \end{center}
+            \tiny{Li \textit{et al.} (2017). \textit{The Journal of chemical
+            physics}}
         \end{columns}
 
     \end{frame}
 
-    \subsection{LiC}
+    \subsection{Li$_x$C}
     \begin{frame}
         \begin{center}
-            {\huge LiC}
+            {\huge Li$_x$C}
         \end{center}
         \tiny{
             Fujikake, S., Deringer, V. L., Lee, T. H., Krynski, M., 
@@ -831,7 +866,7 @@ su aplicación a baterías de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterías de litio: LiC}
+        \frametitle{Aplicaciones en baterías de litio: Li$_x$C}
             
         Los ánodos de las baterías de litio suelen ser de \textbf{grafito} u otras
         nanoestructuras de carbono.
@@ -839,8 +874,10 @@ su aplicación a baterías de litio}
         \begin{columns}
             \column{0.4\textwidth}
             \begin{center}
-                \includegraphics[width=\columnwidth]{LiC-metodo.png}
+                \includegraphics[width=0.9\columnwidth]{LiC-metodo.png}
             \end{center}
+            \tiny{Fujikake \textit{et al.} (2018). \textit{The Journal of chemical
+            physics}}
 
             \pause
 
@@ -862,7 +899,7 @@ su aplicación a baterías de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterías de litio: LiC}
+        \frametitle{Aplicaciones en baterías de litio: Li$_x$C}
             
         Los ánodos de las baterías de litio suelen ser de \textbf{grafito} u otras
         nanoestructuras de carbono.
@@ -870,8 +907,10 @@ su aplicación a baterías de litio}
         \begin{columns}
             \column{0.4\textwidth}
             \begin{center}
-                \includegraphics[width=\columnwidth]{LiC-metodo.png}
+                \includegraphics[width=0.9\columnwidth]{LiC-metodo.png}
             \end{center}
+            \tiny{Fujikake \textit{et al.} (2018). \textit{The Journal of chemical
+            physics}}
 
             \column{0.6\textwidth}
             Cuatro descriptores:
@@ -888,7 +927,7 @@ su aplicación a baterías de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterías de litio: LiC}
+        \frametitle{Aplicaciones en baterías de litio: Li$_x$C}
         
         \begin{columns}
             \column{0.6\textwidth}
@@ -906,12 +945,14 @@ su aplicación a baterías de litio}
             \begin{center}
                 \includegraphics[width=\columnwidth]{LiC-LiLi_efectivo.png}
             \end{center}
+            \tiny{Fujikake \textit{et al.} (2018). \textit{The Journal of chemical
+            physics}}
         \end{columns}
 
     \end{frame}
 
     \begin{frame}
-        \frametitle{Aplicaciones en baterías de litio: LiC}
+        \frametitle{Aplicaciones en baterías de litio: Li$_x$C}
         
         \begin{columns}
             \column{0.4\textwidth}
@@ -920,6 +961,13 @@ su aplicación a baterías de litio}
             \end{center}
 
             \column{0.6\textwidth}
+            {\tiny Fujikake \textit{et al.} (2018). \textit{The Journal of chemical
+            physics}}
+
+            \
+
+            \
+
             \textbf{Base de datos}:
             \begin{itemize}
                 \item Átomos de Li en posiciones aleatorias de estructuras de:
@@ -935,13 +983,15 @@ su aplicación a baterías de litio}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterías de litio: LiC}
+        \frametitle{Aplicaciones en baterías de litio: Li$_x$C}
         
         \begin{columns}
             \column{0.5\textwidth}
             \begin{center}
                 \includegraphics[width=\columnwidth]{LiC-training_testing.png}
             \end{center}
+            \tiny{Fujikake \textit{et al.} (2018). \textit{The Journal of chemical
+            physics}}
 
             \column{0.5\textwidth}
             RMSE (MAE) de la energía de intercalación de Li: 0.37 (0.29) eV/átomo
@@ -958,7 +1008,7 @@ su aplicación a baterías de litio}
     \end{frame}
     
     %\begin{frame}
-    %    \frametitle{Aplicaciones en baterías de litio: LiC}
+    %    \frametitle{Aplicaciones en baterías de litio: Li$_x$C}
     %
     %    \textbf{Absorsión de un átomo de Li y difusión entre dos mínimos de 
     %    potencial}
@@ -966,10 +1016,12 @@ su aplicación a baterías de litio}
     %    \begin{center}
     %        \includegraphics[width=0.3\textwidth]{LiC-sites.png}
     %    \end{center}
+    %    \tiny{Fujikake \textit{et al.} (2018). \textit{The Journal of chemical
+    %    physics}}
     %\end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterías de litio: LiC}
+        \frametitle{Aplicaciones en baterías de litio: Li$_x$C}
 
         \textbf{Simulaciones de dinámica molecular}
 
@@ -981,7 +1033,7 @@ su aplicación a baterías de litio}
                 \item Temperatura: 1000 K
                 \item Paso temporal: 1 fs
                 \item Tiempo de equilibración: 25 ps 
-                \item Tiempo de sampleo: 50 ps
+                \item Tiempo de muestreo: 50 ps
             \end{itemize}
 
             \ \pause
@@ -992,11 +1044,13 @@ su aplicación a baterías de litio}
             \begin{center}
                 \includegraphics[width=\columnwidth]{LiC-MD-results.png}
             \end{center}
+            \tiny{Fujikake \textit{et al.} (2018). \textit{The Journal of chemical
+            physics}}
         \end{columns}
     \end{frame}
     
     \begin{frame}
-        \frametitle{Aplicaciones en baterías de litio: LiC}
+        \frametitle{Aplicaciones en baterías de litio: Li$_x$C}
 
         \textbf{Simulaciones de dinámica molecular}
 
@@ -1007,6 +1061,8 @@ su aplicación a baterías de litio}
             \begin{center}
                 \includegraphics[width=\columnwidth]{LiC-VDOS.png}
             \end{center}
+            \tiny{Fujikake \textit{et al.} (2018). \textit{The Journal of chemical
+            physics}}
             
             \column{0.65\textwidth}
             \textit{Vibrational density of states} usando la función de 
@@ -1015,6 +1071,7 @@ su aplicación a baterías de litio}
     \end{frame}
 
     \subsection{Li$_x$Si}
+
     \begin{frame}
         \begin{center}
             {\huge Li$_x$Si}
@@ -1038,6 +1095,8 @@ su aplicación a baterías de litio}
             \begin{center}
                 \includegraphics[width=\columnwidth]{LiSi-metodo.png}
             \end{center}
+            \tiny{Artrith \textit{et al.} (2018). \textit{The Journal of chemical
+            physics}}
 
             \pause
             
@@ -1064,6 +1123,8 @@ su aplicación a baterías de litio}
             \begin{center}
                 \includegraphics[width=\columnwidth]{LiSi-metodo.png}
             \end{center}
+            \tiny{Artrith \textit{et al.} (2018). \textit{The Journal of chemical
+            physics}}
 
             \column{0.35\textwidth}
             \begin{itemize}
@@ -1071,7 +1132,7 @@ su aplicación a baterías de litio}
                     \begin{enumerate}
                         \item Potencial NN con 725 estructuras de DFT (estructuras
                             cristalinas, escaleo isotrópico, vacancias).
-                        \item Mediante algorítmos genéticos se busca que átomo 
+                        \item Mediante algoritmos genéticos se busca que átomo 
                             de Li extraer en un proceso de delitiación.
                     \end{enumerate}
             \end{itemize}
@@ -1090,6 +1151,8 @@ su aplicación a baterías de litio}
             \begin{center}
                 \includegraphics[width=\columnwidth]{LiSi-metodo.png}
             \end{center}
+            \tiny{Artrith \textit{et al.} (2018). \textit{The Journal of chemical
+            physics}}
 
             \column{0.35\textwidth}
             Al menos 30 estructuras son optimizadas por DFT para obtener la 
@@ -1109,6 +1172,8 @@ su aplicación a baterías de litio}
             \begin{center}
                 \includegraphics[width=\columnwidth]{LiSi-metodo.png}
             \end{center}
+            \tiny{Artrith \textit{et al.} (2018). \textit{The Journal of chemical
+            physics}}
 
             \column{0.35\textwidth}
             \begin{center}
@@ -1126,7 +1191,7 @@ su aplicación a baterías de litio}
         \begin{columns}
             \column{0.5\textwidth}
             \begin{itemize}
-                \item Ensamble NVT, paso temporal de 2 fs y algorítmo de Verlet.
+                \item Ensamble NVT, paso temporal de 2 fs y algoritmo de Verlet.
                 \item Se reentrenó el potencial con 45000 estructuras de clusters, 
                     bordes y con distintos frames de dinámicas a altas
                     temperaturas.
@@ -1139,6 +1204,8 @@ su aplicación a baterías de litio}
             \begin{center}
                 \includegraphics[width=\columnwidth]{LiSi-energias_de_formacion.png}
             \end{center}
+            \tiny{Artrith \textit{et al.} (2018). \textit{The Journal of chemical
+            physics}}
         \end{columns}
             
     \end{frame}
@@ -1153,6 +1220,8 @@ su aplicación a baterías de litio}
             \begin{center}
                 \includegraphics[width=\columnwidth]{LiSi-rdfs.png}
             \end{center}
+            \tiny{Artrith \textit{et al.} (2018). \textit{The Journal of chemical
+            physics}}
 
             \column{0.3\textwidth}
             \begin{itemize}
@@ -1166,10 +1235,17 @@ su aplicación a baterías de litio}
         \frametitle{Aplicaciones en baterías de litio: Li$_x$Si}
         
         \textbf{Simulaciones de dinámica molecular}
-        
-        \begin{center}
-            \includegraphics[width=0.6\textwidth]{LiSi-potencial_vs_Li.png}
-        \end{center}
+
+        \begin{columns}
+            \column{0.6\textwidth}
+            \begin{center}
+                \includegraphics[width=\columnwidth]{LiSi-potencial_vs_Li.png}
+            \end{center}
+            
+            \column{0.4\textwidth}
+            \tiny{Artrith \textit{et al.} (2018). \textit{The Journal of chemical
+            physics}}
+        \end{columns}
             
     \end{frame}
     
