@@ -3,17 +3,20 @@
 > Seminario del doctorado en Física en [FAMAF](https://www.famaf.unc.edu.ar/investigaci%C3%B3n/%C3%A1reas-de-investigaci%C3%B3n/f%C3%ADsica-ofi/seminarios-de-f%C3%ADsica/).
 
 En el campo de las simulaciones computacionales existen principalmente dos 
-variantes para el estudio de materiales, por primeros principios o a través de 
-aproximaciones clásicas, las primeras de ellas de gran precisión pero limitada a 
-sistemas pequeños mientras que la segunda permite simulaciones en escalas más 
-grandes pero su precisión depende de la forma funcional que se elija. Debido a la
-complejidad en aumento de los sistemas electroquímicos de interés en el área de 
-las baterías de litio, es necesario que las simulaciones puedan realizarse a 
-escalas mayores sin perder precisión, los potenciales interatómicos de aprendizaje 
-automático ofrecen representar la superficie energía-potencial mediante un
-entrenamiento con datos de la estructura electrónica que permite llevar esto a 
-cabo. En este seminario se introducen dichos potenciales y se presentan 
-aplicaciones de los mismos en distintos componentes de las baterías de litio. 
+variantes para el estudio de materiales. Por un lado, las que se realizan con 
+potenciales de interacción que se calculan a partir de primeros principios, y por
+otro lado las que emplean algún tipo de aproximación para estos potenciales. Las 
+primeras de ellas tienen una gran precisión pero se encuentran limitadas a 
+sistemas pequeños mientras que las segundas permiten simulaciones en escalas más 
+grandes, pero su precisión depende de la forma funcional que se elija para el 
+potencial en cuestión. Debido a la complejidad en aumento de los sistemas 
+electroquímicos de interés en el área de las baterías de litio, es necesario que 
+las simulaciones puedan realizarse a escalas grandes sin perder precisión. Los 
+potenciales interatómicos de aprendizaje automático ofrecen representar la 
+superficie energía-potencial mediante un entrenamiento con datos a partir de 
+cálculos de estructura electrónica, que permiten llevar esto a cabo. En este 
+seminario se introducen dichos potenciales y se presentan aplicaciones de los 
+mismos en distintos componentes de las baterías de litio.
 
 ----------------------------------------------------------------------------------
 ### Referencias
