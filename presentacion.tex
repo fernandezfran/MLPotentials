@@ -574,7 +574,7 @@ Universidad Nacional de Córdoba \\ \scalebox{1.5}{\insertlogo}}
         \begin{columns}
             \column{0.5\textwidth}
             $$
-            E_i(\mathbf{q}_i) = \sum_{j=1}^{N_{basis}} \alpha_j \chi_j(\mathbf{q}_j).
+            E_i(\mathbf{q}_i) = \sum_{j=1}^{N_{train}} \alpha_j \chi_j(\mathbf{q}_j).
             $$
 
             \column{0.5\textwidth}
@@ -587,7 +587,7 @@ Universidad Nacional de Córdoba \\ \scalebox{1.5}{\insertlogo}}
 
         La energía atómica,
         $$
-        E_i  = \sum_{n=1}^{N_{ref}} \alpha_n e^{-\frac{1}{2}\cdot\sum_{l=1}^L [(\mathbf{q}_l - \mathbf{q}_{n,l}) / \theta_l]^2},
+        E_i  = \sum_{n=1}^{N_{train}} \alpha_n e^{-\frac{1}{2}\cdot\sum_{l=1}^L [(\mathbf{q}_l - \mathbf{q}_{n,l}) / \theta_l]^2},
         $$
 
         \ \pause
