@@ -1,6 +1,10 @@
 # Potenciales interatómicos de aprendizaje automático y su aplicación a baterías de litio
 
-> Seminario del doctorado en Física en [FAMAF](https://www.famaf.unc.edu.ar/investigaci%C3%B3n/%C3%A1reas-de-investigaci%C3%B3n/f%C3%ADsica-ofi/seminarios-de-f%C3%ADsica/).
+> Seminario del doctorado en Física de [FAMAF](https://www.famaf.unc.edu.ar/investigaci%C3%B3n/%C3%A1reas-de-investigaci%C3%B3n/f%C3%ADsica-ofi/seminarios-de-f%C3%ADsica/), dictado en la Aula Magna Enrique Gaviola, 
+> el 22/04/2022.
+>
+> A la grabación de las diapositivas más la charla se puede acceder a través del
+> siguiente [link](https://drive.google.com/file/d/1xUvRu8-4x-W8CxxCurAVo8sQ_U2cFrXP/view?usp=sharing)
 
 En el campo de las simulaciones computacionales existen principalmente dos 
 variantes para el estudio de materiales. Por un lado, las que se realizan con 
