@@ -1,10 +1,12 @@
 # Potenciales interatómicos de aprendizaje automático y su aplicación a baterías de litio
 
-> Seminario del doctorado en Física de [FAMAF](https://www.famaf.unc.edu.ar/investigaci%C3%B3n/%C3%A1reas-de-investigaci%C3%B3n/f%C3%ADsica-ofi/seminarios-de-f%C3%ADsica/), dictado en la Aula Magna Enrique Gaviola, 
-> el 22/04/2022.
->
-> A la grabación de las diapositivas más la charla se puede acceder a través del
-> siguiente [link](https://drive.google.com/file/d/1xUvRu8-4x-W8CxxCurAVo8sQ_U2cFrXP/view?usp=sharing)
+Seminario del doctorado en Física de [FAMAF](https://www.famaf.unc.edu.ar/investigaci%C3%B3n/%C3%A1reas-de-investigaci%C3%B3n/f%C3%ADsica-ofi/seminarios-de-f%C3%ADsica/), dictado en la Aula Magna Enrique Gaviola, el 22/04/2022.
+
+A la grabación de las diapositivas más la charla se puede acceder a través del 
+siguiente [link](https://drive.google.com/file/d/1oIAxwzCobBo9PtcgWuFWWTdKZAFTW-8H/view?usp=sharing).
+
+
+## Resumen
 
 En el campo de las simulaciones computacionales existen principalmente dos 
 variantes para el estudio de materiales. Por un lado, las que se realizan con 
@@ -22,8 +24,8 @@ cálculos de estructura electrónica, que permiten llevar esto a cabo. En este
 seminario se introducen dichos potenciales y se presentan aplicaciones de los 
 mismos en distintos componentes de las baterías de litio.
 
-----------------------------------------------------------------------------------
-### Referencias
+
+## Referencias
 
 - Deringer, V. L. (2020). Modelling and understanding battery materials with 
 machine-learning-driven atomistic simulations. _Journal of Physics: Energy_,
@@ -69,8 +71,7 @@ phase diagrams of amorphous Li x Si using machine-learning-assisted sampling wit
 an evolutionary algorithm. _The Journal of chemical physics_, 148(24), 241711.
 
 
-----------------------------------------------------------------------------------
-### Compilación
+## Compilación
 
 Para compilar se puede utilizar el **Makefile** simplemente tipeando en la 
 terminal (Linux OS):
